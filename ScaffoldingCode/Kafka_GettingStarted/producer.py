@@ -1,21 +1,6 @@
-#
-#
-# Author: Aniruddha Gokhale
-# CS4287-5287: Principles of Cloud Computing, Vanderbilt University
-#
-# Created: Sept 6, 2020
-#
-# Purpose:
-#
-#    Demonstrate the use of Kafka Python streaming APIs.
-#    In this example, we use the "top" command and use it as producer of events for
-#    Kafka. The consumer can be another Python program that reads and dumps the
-#    information into a database OR just keeps displaying the incoming events on the
-#    command line consumer (or consumers)
-#
-
-import os   # need this for popen
-import time # for sleep
+import csv # need this to interact with file
+from time import sleeo
+from json import dumps
 from kafka import KafkaProducer  # producer of events
 
 # We can make this more sophisticated/elegant but for now it is just
@@ -23,17 +8,18 @@ from kafka import KafkaProducer  # producer of events
 
 # acquire the producer
 # (you will need to change this to your bootstrap server's IP addr)
-producer = KafkaProducer (bootstrap_servers="129.114.25.80:9092", 
-                                          acks=1)  # wait for leader to write to log
+producer = KafkaProducer (bootstrap_servers="129.114.27.:9092", 
+                                          value_serializer=lambda x:
+                                          dumps(x).encode('utf-8'))  # wait for leader to write to log
 
 # say we send the contents 100 times after a sleep of 1 sec in between
-for i in range (100):
-    
-    # get the output of the top command
-    process = os.popen ("top -n 1 -b")
+with open('Count_Statistics_2019.csv', r) as csv_file:
+    csv_reader = csv_reader(csv_file)
 
-    # read the contents that we wish to send as topic content
-    contents = process.read ()
+for line in csv_reader:
+    process = line
+
+    contents = {'test_data' : line}
 
     # send the contents under topic utilizations. Note that it expects
     # the contents in bytes so we convert it to bytes.
@@ -43,18 +29,11 @@ for i in range (100):
     # You will need to modify it to send a JSON structure, say something
     # like <timestamp, contents of top>
     #
-    producer.send ("utilizations", value=bytes (contents, 'ascii'))
+    producer.send ("utilizations", value=contents)
     producer.flush ()   # try to empty the sending buffer
 
     # sleep a second
-    time.sleep (1)
+    time.sleep (5)
 
 # we are done
 producer.close ()
-    
-
-
-
-
-
-
