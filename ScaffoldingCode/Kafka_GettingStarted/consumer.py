@@ -3,11 +3,7 @@ import json
 import time # for sleep
 from kafka import KafkaConsumer  # consumer of events
 
-# We can make this more sophisticated/elegant but for now it is just
-# hardcoded to the setup I have on my local VMs
-
 # acquire the consumer
-# (you will need to change this to your bootstrap server's IP addr)
 consumer = KafkaConsumer (bootstrap_servers="129.114.27.112:9092",
                                     value_deserializer=lambda m:
                                     json.loads(m.decode('utf-8')))
