@@ -18,10 +18,13 @@ for msg in consumer:
     # utilizations topic because that is the only topic we subscribed to.
     # Otherwise we will need to demultiplex the incoming data according to the
     # topic coming in.
-    couch = couchdb.Server("http://129.114.26.148:5984")
-    db = couch[<our db name>]
-    db_entry = json.load(msg.value)
-    db.save(db_entry)
+    
+    print(msg.value)
+    # couchdb code that was not used
+    # couch = couchdb.Server("http://129.114.26.148:5984")
+    # db = couch[<our db name>]
+    # db_entry = json.load(msg.value)
+    # db.save(db_entry)
 
 # we are done. As such, we are not going to get here as the above loop
 # is a forever loop.
