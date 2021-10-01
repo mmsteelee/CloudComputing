@@ -1,5 +1,5 @@
 import csv # need this to interact with file
-from time import sleeo
+import time
 from json import dumps
 from kafka import KafkaProducer  # producer of events
 
@@ -9,8 +9,8 @@ producer = KafkaProducer (bootstrap_servers="129.114.27.112:9092",
                                           dumps(x).encode('utf-8'))
 
 # open csv file into a reader
-with open('Count_Statistics_2019.csv', r) as csv_file:
-    csv_reader = csv_reader(csv_file)
+with open('Count_Statistics_2019.csv') as csv_file:
+    csv_reader = csv.reader(csv_file)
 
 # process csv line by line
 for line in csv_reader:
