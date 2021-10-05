@@ -5,4 +5,5 @@ mkdir -p ~/.ssh
 mkdir -p ~/.ansible
 mkdir -p ~/.config
 mkdir -p ~/.config/openstack
+mkdir -p ~/.aws/credentials
 
