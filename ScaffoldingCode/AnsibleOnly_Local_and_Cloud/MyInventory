@@ -41,12 +41,14 @@
 #
 [MyChameleonVMs]
 # The following will need to be changed by the user (their floating IP on chameleon and the full name and location of the pem file)
-129.114.25.176 ansible_connection=ssh ansible_ssh_private_key_file=/home/gokhale/.ssh/gokhale_chameleoncloud.pem
-129.114.27.100 ansible_connection=ssh ansible_ssh_private_key_file=/home/gokhale/.ssh/gokhale_chameleoncloud.pem
+129.114.26.148 ansible_connection=ssh ansible_ssh_private_key_file=/home/gokhale/.ssh/gokhale_chameleoncloud.pem
+129.114.27.112 ansible_connection=ssh ansible_ssh_private_key_file=/home/gokhale/.ssh/gokhale_chameleoncloud.pem
 
 # If I have VMs on other cloud platforms, I can have more aliases
 #[MyAWSVMs]
-#
+54.242.253.186 ansible_connection=ssh ansible_ssh_private_key_file=
+3.95.212.140 ansible_connection=ssh ansible_ssh_private_key_file=
+
 #[MyAzureVMs]
 #
 # and so on.
