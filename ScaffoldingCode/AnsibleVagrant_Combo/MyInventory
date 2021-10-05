@@ -46,7 +46,8 @@
 
 # If I have VMs on other cloud platforms, I can have more aliases
 #[MyAWSVMs]
-#
+54.242.253.186 ansible_connection=ssh ansible_ssh_private_key_file=
+3.95.212.140 ansible_connection=ssh ansible_ssh_private_key_file=
 #[MyAzureVMs]
 #
 # and so on.
