@@ -103,7 +103,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "./.ansible.cfg", destination: "~/.ansible.cfg"
   config.vm.provision "file", source: "./MyInventory", destination: "~/.ansible/MyInventory"
   config.vm.provision "file", source: "C:/Users/gokhale/.config/openstack/clouds.yaml", destination: "~/.config/openstack/clouds.yaml"
-  
+  config.vm.provision "file", source: "../Kafka_GettingStarted/producer.py", destination: "~/producer.py"
+  config.vm.provision "file", source: "../Kafka_GettingStarted/Count_Statistics_2019.csv", destination: "~/Count_Statistics_2019.csv"
+
   # make sure the permissions on the  pem file are not too open.
   # Note, here I show you using inline and privileged: false so the inline
   # action actually happens as the user vagrant.
