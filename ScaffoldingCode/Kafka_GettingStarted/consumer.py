@@ -1,4 +1,4 @@
-import couchdb
+# import couchdb
 import json
 import time # for sleep
 from kafka import KafkaConsumer  # consumer of events
