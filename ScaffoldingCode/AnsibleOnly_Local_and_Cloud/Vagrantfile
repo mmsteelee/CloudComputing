@@ -99,11 +99,7 @@ Vagrant.configure("2") do |config|
   # let's also copy our ansible.cfg, MyInventory and cloud.yaml file
   config.vm.provision "file", source: "./.ansible.cfg", destination: "/home/vagrant/.ansible.cfg"
   config.vm.provision "file", source: "./MyInventory", destination: "/home/vagrant/.ansible/MyInventory"
-  config.vm.provision "file", 
-	source: "C:/Users/awggs/.config/openstack/clouds.yaml", 
-	destination: "/home/vagrant/tmp/clouds.yaml"
-  config.vm.provision "shell",
-	inline: "mv /tmp/clouds.yaml /home/vagrant/.config/openstack/clouds.yaml"
+  config.vm.provision "file", source: "C:/Users/awggs/.config/openstack/clouds.yaml", destination: "/home/vagrant/.config/openstack/clouds.yaml"
 
   config.ssh.insert_key = false
   $script = <<-SCRIPT
