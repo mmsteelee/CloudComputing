@@ -8,7 +8,7 @@
 # import_playbook: <playbook>
 # I show this approach for actions I do on the local VM where I let the
 # playbook define the hosts: and other params
-# However for other plays, I show a different approach using import_tasks or
+# However for other plays, can different approach using import_tasks or
 # include_tasks statements.
 #
 # The import_* statements are statically included and parsed while include_*
@@ -28,7 +28,7 @@
 #####################################################
 - name: "Play 1: Perform fact gathering on all VMs"
   hosts: MyLocalVMs          # specified in the MyInventory file
-  remote_user:  gokhale      # note that the user is ubuntu for 
+  remote_user:  ubuntu	     # note that the user is ubuntu for 
                              # vagrant-created VM else use the
                              # appropriate user name
 

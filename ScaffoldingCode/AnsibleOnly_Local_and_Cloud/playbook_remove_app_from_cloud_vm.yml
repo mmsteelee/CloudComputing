@@ -1,9 +1,5 @@
 ---
 #
-# EECS 4287/5287: Principles of Cloud Computing
-# Author: Aniruddha Gokhale
-# Created: Fall 2020
-#
 # This playbook will remove specified packages on cloud VM
 # Our cloud can be Horizon Cloud VM or Chameleon VMs or AWS VMs
 - hosts: MyChameleonVMs  # machines on whom the action is performed
