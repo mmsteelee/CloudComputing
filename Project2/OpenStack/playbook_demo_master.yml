@@ -1,10 +1,4 @@
 ---
-#
-# EECS 4287/5287: Principles of Cloud Computing
-# Author: Aniruddha Gokhale
-# Created: Fall 2017
-# Modified: Fall 2020
-#
 # This playbook is our demo master file
 # The goal is to show how to have a single master file which then
 # includes multiple plays according to some well-designed choreography
