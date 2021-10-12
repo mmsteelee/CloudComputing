@@ -1,0 +1,52 @@
+
+- name: Create a new instance VM1 on the openstack cloud
+  hosts: MyLocalVMs
+  remote_user: vagrant
+  tasks:
+    - name: create security group
+      os_security_group:
+        #cloud:
+        state: present
+        name: security-group
+        description: Security group for our instance
+
+    - name: create security group rule for ping
+      os_security_group_rule:
+        #cloud:
+        security_group: security-group
+        protocol: icmp
+        remote_ip_prefix: 0.0.0.0/0
+
+    - name: create security group rule for kafka
+      openstack.cloud.security_group_rule:
+        #cloud:
+        security_group: security-group
+        protocol: tcp
+        port_range_min: 80
+        port_range_max: 80
+        remote_ip_prefix: 0.0.0.0/0
+
+    -name: create security group rule for SSH
+      os_security_group_rule:
+        #cloud:
+        security_group: security-group
+        protocol: tcp
+        port_range_min: 22
+        port_range_max: 22
+        remote_ip_prefix: 0.0.0.0/0
+
+    - name: create instance
+      os_server:
+        state: present
+        #cloud:
+        name: VM1
+        image: 
+        key_name: 
+        timeout: 200
+        flavor: m1.small
+        auto_ip: yes
+        security_groups:
+          - test-security-group
+      register:
+        VM1
+
