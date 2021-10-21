@@ -1,7 +1,11 @@
-
+---
+#
+# Author: Matt Steele, Austin Groeneveld
+#
 - name: Create a new instance VM1 on the openstack cloud
   hosts: MyLocalVMs
   remote_user: vagrant
+
   tasks:
     - name: create security group
       os_security_group:
@@ -22,17 +26,15 @@
         cloud: "CH-819381"
         security_group: security-group
         protocol: tcp
-        port_range_min: 80
-        port_range_max: 80
+        port: 80
         remote_ip_prefix: 0.0.0.0/0
 
-    -name: create security group rule for SSH
+    - name: create security group rule for SSH
       os_security_group_rule:
         cloud: "CH-819381"
         security_group: security-group
         protocol: tcp
-        port_range_min: 22
-        port_range_max: 22
+        port: 22
         remote_ip_prefix: 0.0.0.0/0
 
     - name: create instance
@@ -40,13 +42,14 @@
         state: present
         cloud: "CH-819381"
         name: VM1
-        image: 
-        key_name: 
+        image: ubuntu-14.04
+        key_name: team10-publickey
         timeout: 200
         flavor: m1.small
-        auto_ip: yes
-        security_groups:
-          - test-security-group
+        floating_ips:
+          - 129.114.26.148
+        security_groups: security-group
       register:
         VM1
 
+...
