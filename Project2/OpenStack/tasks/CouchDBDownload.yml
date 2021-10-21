@@ -1,0 +1,29 @@
+---
+
+- name: Install CouchDB on VM3
+  hosts: VM3
+  remote_user: cc
+  become: yes
+  tasks:
+    - name: cache update
+      apt:
+        update_cache: yes
+    - name: install_couchdb.sh
+      ansible.builtin.script: /vagrant/install_couchdb.sh
+    - name: cache update
+      apt:
+        update_cache: yes
+    - name: Install couchdb
+      apt: 
+        name: couchdb
+        state: present
+    - name: Copy local.ini file to make admin user
+      copy:
+        src: /vagrant/local.ini
+        dest: /opt/couchdb/etc/local.ini
+    - name: Change file permissions
+      ansible.builtin.command: chmod 640 /opt/couchdb/etc/local.ini
+    - name: Install couchdb python packages
+      ansible.builtin.command: pip3 install couchdb 
+
+...
