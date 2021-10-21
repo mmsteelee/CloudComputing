@@ -106,7 +106,6 @@ Vagrant.configure("2") do |config|
   # Moreover, we also show a diff approach to put the inline code in
   # a block, and then use the block name. 
   # Change file name as appropriate. Replace this with your pem file.
-  config.ssh.insert_key = false
   $script = <<-SCRIPT
      chmod go-rwx /home/vagrant/.ssh/team10-key.pem
   SCRIPT
