@@ -40,13 +40,14 @@
         state: present
         cloud: "CH-819381"
         name: VM1
-        image: 
-        key_name: 
-        timeout: 200
-        flavor: m1.small
-        auto_ip: yes
-        security_groups:
-          - test-security-group
-      register:
-        VM1
-
+          #image: 
+          key_name: team10-publickey
+          timeout: 200
+          flavor: m1.small
+          floating_ips:
+            - MyChamelionVMs
+          security_groups:
+            - security-group
+        register:
+          VM1
+...
