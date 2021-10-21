@@ -1,0 +1,55 @@
+---
+  - hosts: MyChameleonVMs
+  gather_facts: no
+  sudo: true
+  user: deploy
+  tasks:
+    - name: Install Couchdb dependencies
+    yum: name={{ item }} state=installed
+    with_items:
+    - autoconf
+    - autoconf-archive
+    - automake
+    - curl-devel
+    - erlang-asn1
+    - erlang-erts
+    - erlang-eunit
+    - erlang-os_mon
+    - erlang-xmerl
+    - help2man
+    - js-devel
+    - libicu-devel
+    - libtool
+    - perl-Test-Harness
+    tags: install_dependencies
+
+  - name: Download the CouchDB source files to /usr/local/couchdb
+    get_url: url=http://www.eu.apache.org/dist/couchdb/source/1.6.0/apache-couchdb-1.6.0.tar.gz dest=/usr/local/src
+
+  - name: Unarchive the CouchDB source files
+    command: chdir=/usr/local/src tar -xvzf apache-couchdb-1.6.0.tar.gz
+
+  - name: Configure and compile CouchDB from source
+    shell: cd /usr/local/src/apache-couchdb-1.6.0; make distclean; ./configure --with-erlang=/usr/lib64/erlang/usr/include; make && make install
+  
+  - name: Add a couchdb user
+    user: name=couchdb createhome=no shell=/bin/bash system=yes
+    tags: add_user
+
+  - name: Change the ownership of the couchdb directories
+    file: name={{ item }} owner=couchdb group=couchdb mode=0770
+    with_items:
+    - /usr/local/etc/couchdb
+    - /usr/local/var/lib/couchdb
+    - /usr/local/var/log/couchdb
+    - /usr/local/var/run/couchdb 
+    tags: change_ownership
+
+  - name: Copy the couchdb script from /usr/local/etc/init.d/couchdb to /etc/init.t/couchdb
+    command: cp /usr/local/etc/rc.d/couchdb /etc/init.d/
+   
+  - name: Ensure that CouchDB is started and runs at boot time
+    service: name=couchdb state=running enabled=yes
+
+
+...
