@@ -2,20 +2,16 @@
 - name: Set UFW rules for both VMS
   hosts: MyChameleonVMs
   remote_user: cc
+  collections:   # this is new starting with Ansible 2.9 (akin to importing package)
+    - openstack.cloud
   become: yes
   tasks:
     - name: Allow Kafka
-      community.general.ufw:
-        rule: limit
-        port: 9092
+      shell:  "sudo ufw allow proto tcp from any to any port 9092"
 
     - name: Allow Zookeeper
-      community.general.ufw:
-        rule: limit
-        port: 2181
+      shell:  "sudo ufw allow proto tcp from any to any port 2181"
     
     - name: Allow CouchDB
-      community.general.ufw:
-        rule: limit
-        port: 5984
+      shell:  "sudo ufw allow proto tcp from any to any port 5984"
 ...
