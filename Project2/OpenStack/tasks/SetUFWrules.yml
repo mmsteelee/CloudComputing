@@ -1,8 +1,5 @@
 ---
 - name: Set UFW rules for both VMS
-  hosts: MyChameleonVMs
-  remote_user: cc
-  become: yes
   tasks:
     - name: Allow Kafka
       community.general.ufw:

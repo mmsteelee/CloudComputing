@@ -1,18 +1,32 @@
 ---
-  - name: Download kafka to VMs
-    hosts: MyChameleonVMs
-    become_user: yes
-    remote_user: cc
-    collections:
-      - openstack.cloud
+- name: Download Kafka to VMs
+  remote_user: cc
+  collections:
+    - openstack.cloud
+  become: yes
+  tasks:
+    - name: Kafka Download
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+        cache_valid_time: 5000
+    - name: upgrade
+      apt:
+        upgrade: dist
+        force_apt_get: yes
+    - name: install java
+      apt:
+        name: openjdk-11-jre-headless
+        state: latest
+    - name: remove kafka dir
+      shell: "rm -rf kafka"
 
-      - name: Kafka Download
-        get_url:
-          url: https://www.apache.org/dyn/closer.cgi?path=/kafka/3.0.0/kafka-3.0.0-src.tgz
-          dest: /home/cc
-      - name: Download file TAR
-        ansible.builtin.unarchive:
-          remote_src: yes
-          src: /home/cc/kafka-3.0.0-src.tgz
-          dest: /home/cc
+    - name: create kafka dir
+      shell: "mkdir kafka"
+
+    - name: download kafka
+      shell: "curl \"https://dlcdn.apache.org/kafka/2.8.1/kafka_2.13-2.8.1.tgz\" -o ./kafka/kafka.tgz"
+
+    - name: extract kafka
+      shell: "tar -xvzf kafka/kafka.tgz --strip 1"
 ...

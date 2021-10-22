@@ -11,19 +11,26 @@
 # Here I show the use of import_tasks from child playbooks
 #####################################################
 - name: "Play 1: Create VMs"
-  hosts: MyLocalVMs          # specified in the MyInventory file
-  remote_user: ubuntu      # note that the user is ubuntu for
-                             # vagrant-created VM else use the
-                             # appropriate user name
-
-  gather_facts: no          # We ask Ansible to collect all facts
-  become_user: no            # No need for sudo as we are not installing anything
-
-  tasks:    # the task to be performed
+  hosts: MyLocalVMs
+  remote_user: vagrant
+  gather_facts: yes
+  become_user: no
+  tasks:
 #  - include_tasks: tasks/CreateVMs.yml
+
+- name: "Play 2: Firewall Settings and Downloads"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  become: yes
+  collections:
+    - openstack.cloud
+  tasks:
+  - include_tasks: tasks/SetUFWrules.yml
   - include_tasks: tasks/download_kafka.yml
   - include_tasks: tasks/CouchDBDownload.yml
-  - include_tasks: tasks/SetUFWrules.yml
+
+- name: "Play 3: Run servers"
+  tasks:
   - include_tasks: tasks/
   - include_tasks: tasks/run_kafka_servers.yml
   - include_tasks: tasks/create_kafka_topics.yml
