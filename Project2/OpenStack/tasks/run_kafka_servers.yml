@@ -1,0 +1,28 @@
+---
+- name: Run zookeeper and kafka servers on VM2
+  hosts: VM2
+  remote_user: cc
+  gather_facts: yes
+  become_user: no
+  tasks:
+    - name: Launch zookeeper
+      ansible.builtin.command: bin/zookeeper-server-start.sh 
+      args:
+        creates: config/zookeeper.properties
+        
+    - name: Start kafka on VM2
+      ansible.builtin.command: bin/kafka-server-start.sh 
+      args:
+        creates: config/server.properties
+
+- name: Run kafka on VM3
+  hosts: VM3
+  remote_user: cc
+  gather_facts: yes
+  become_user: no
+  tasks:
+    - name: Start kafka on VM3
+      ansible.builtin.command: bin/kafka-server-start.sh 
+      args:
+        creates: config/server.properties
+...
