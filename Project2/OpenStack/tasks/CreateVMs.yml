@@ -19,7 +19,7 @@
         - ENABLE_WIREGUARD
         - ENABLE_ZMQ_APPS
       floating_ips:
-        - 129.114.27.112
+        - 129.114.26.148
       nics:
         - net-name: CH-819381-net
   - name: launch VM3 instance
@@ -42,7 +42,7 @@
         - ENABLE_WIREGUARD
         - ENABLE_ZMQ_APPS
       floating_ips:
-        - 129.114.26.148
+        - 129.114.27.112
       nics:
         - net-name: CH-819381-net
 
