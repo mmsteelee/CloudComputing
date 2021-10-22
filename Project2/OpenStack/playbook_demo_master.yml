@@ -4,11 +4,11 @@
 #####################################################
 - name: "Play 1: Create VMs"
   hosts: MyLocalVMs
-  remote_user: ubuntu
-  gather_facts: yes
-  become_user: no
+  remote_user: vagrant
+  collections:
+    - openstack.cloud
   tasks:
-  - include_tasks: tasks/CreateVMs.yml
+#  - include_tasks: tasks/CreateVMs.yml
 
 - name: "Play 2: Firewall Settings and Downloads"
   hosts: MyChameleonVMs
