@@ -20,7 +20,10 @@
   become_user: no            # No need for sudo as we are not installing anything
 
   tasks:    # the task to be performed
-  - include_tasks: tasks/VM1_create.yml
+  - include_tasks: tasks/CreateVMs.yml
+  - include_tasks: tasks/download_kafka.yml
+  - include_tasks: tasks/CouchDBDownload.yml
+  - include_tasks: tasks/SetUFWrules.yml
 
 ...
 
