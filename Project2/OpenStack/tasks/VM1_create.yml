@@ -1,53 +1,54 @@
-
-- name: Create a new instance VM1 on the openstack cloud
+---
+- name: Create new openstack cloud vm instances
   hosts: MyLocalVMs
-  remote_user: vagrant
+  remote_user: ubuntu
+  gather_facts: yes
+  become_user: no
   tasks:
-    - name: create security group
-      os_security_group:
-        cloud: "CH-819381"
+    - name: create vm2 instance
+      openstack.cloud.server:
         state: present
-        name: security-group
-        description: Security group for our instance
-
-    - name: create security group rule for ping
-      os_security_group_rule:
-        cloud: "CH-819381"
-        security_group: security-group
-        protocol: icmp
-        remote_ip_prefix: 0.0.0.0/0
-
-    - name: create security group rule for kafka
-      openstack.cloud.security_group_rule:
-        cloud: "CH-819381"
-        security_group: security-group
-        protocol: tcp
-        port_range_min: 80
-        port_range_max: 80
-        remote_ip_prefix: 0.0.0.0/0
-
-    -name: create security group rule for SSH
-      os_security_group_rule:
-        cloud: "CH-819381"
-        security_group: security-group
-        protocol: tcp
-        port_range_min: 22
-        port_range_max: 22
-        remote_ip_prefix: 0.0.0.0/0
-
-    - name: create instance
-      os_server:
+        cloud: CH-819381
+        name: team10-VM2
+        image: CC-Ubuntu20.04
+        availability_zone: nova
+        key_name: team10-key
+        timeout: 200
+        flavor: m1.small
+        security_groups:
+          - ENABLE_HTTP_HTTPS
+          - ENABLE_ICMP
+          - ENABLE_K8s
+          - ENABLE_KAFKA_COUCHDB
+          - ENABLE_KAFKA_COUCH_SSH
+          - ENABLE_SSH
+          - ENABLE_WIREGUARD
+          - ENABLE_ZMQ_APPS
+        floating_ips:
+          - 129.114.26.148
+        nics:
+          - net-name: CH-819381-net
+    - name: launch VM3 instance
+      openstack.cloud.server:
         state: present
-        cloud: "CH-819381"
-        name: VM1
-          #image: 
-          key_name: team10-publickey
-          timeout: 200
-          flavor: m1.small
-          floating_ips:
-            - MyChamelionVMs
-          security_groups:
-            - security-group
-        register:
-          VM1
+        cloud: CH-819381
+        name: team10-VM3
+        image: CC-Ubuntu20.04
+        availability_zone: nova
+        key_name: team10-key
+        timeout: 200
+        flavor: m1.small
+        security_groups:
+          - ENABLE_HTTP_HTTPS
+          - ENABLE_ICMP
+          - ENABLE_K8s
+          - ENABLE_KAFKA_COUCHDB
+          - ENABLE_KAFKA_COUCH_SSH
+          - ENABLE_SSH
+          - ENABLE_WIREGUARD
+          - ENABLE_ZMQ_APPS
+        floating_ips:
+          - 129.114.27.112
+        nics:
+          - net-name: CH-819381-net
 ...

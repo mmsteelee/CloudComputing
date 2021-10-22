@@ -12,11 +12,11 @@
 #####################################################
 - name: "Play 1: Create VMs"
   hosts: MyLocalVMs          # specified in the MyInventory file
-  remote_user:  ubuntu      # note that the user is ubuntu for 
+  remote_user: ubuntu      # note that the user is ubuntu for
                              # vagrant-created VM else use the
                              # appropriate user name
 
-  gather_facts: false          # We ask Ansible to collect all facts
+  gather_facts: yes          # We ask Ansible to collect all facts
   become_user: no            # No need for sudo as we are not installing anything
 
   tasks:    # the task to be performed
