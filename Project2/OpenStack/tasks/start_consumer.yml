@@ -6,7 +6,7 @@
   become_user: no
   tasks: 
     - name: 
-      script: ./consumer.py
+      script: consumer.py
       args:
         executible: intepreter_python
 

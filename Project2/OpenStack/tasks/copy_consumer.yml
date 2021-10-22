@@ -1,0 +1,13 @@
+---
+- name: Copy consumer.py to VM3
+  hosts: VM3
+  tasks:
+    - name: copy file
+      become: true
+      copy:
+        src: ./consumer.py
+        dest: /cc
+        owner: apache
+        group: apache
+        mode: 0644
+...
