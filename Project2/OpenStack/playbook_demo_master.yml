@@ -8,7 +8,7 @@
   gather_facts: yes
   become_user: no
   tasks:
-#  - include_tasks: tasks/CreateVMs.yml
+  - include_tasks: tasks/CreateVMs.yml
 
 - name: "Play 2: Firewall Settings and Downloads"
   hosts: MyChameleonVMs
