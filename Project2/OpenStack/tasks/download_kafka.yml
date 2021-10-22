@@ -1,19 +1,18 @@
 ---
-- name: Download kafka to VMs
-  hosts: ChameleonVMs
-  become: yes
-  remote_user: cc
-  collections:
-	  - openstack.cloud
-  
-  tasks:
-	  - name: Kafka Download
-		get_url:
-			url: https://www.apache.org/dyn/closer.cgi?path=/kafka/3.0.0/kafka-3.0.0-src.tgz
-			dest: /home/cc
-		- name: Download file TAR
-		ansible.builtin.unarchive:
-			remote_src: yes
-			src: /home/cc/kafka-3.0.0-src.tgz
-			dest: /home/cc
+  - name: Download kafka to VMs
+    hosts: MyChameleonVMs
+    become_user: yes
+    remote_user: cc
+    collections:
+      - openstack.cloud
+
+      - name: Kafka Download
+        get_url:
+          url: https://www.apache.org/dyn/closer.cgi?path=/kafka/3.0.0/kafka-3.0.0-src.tgz
+          dest: /home/cc
+      - name: Download file TAR
+        ansible.builtin.unarchive:
+          remote_src: yes
+          src: /home/cc/kafka-3.0.0-src.tgz
+          dest: /home/cc
 ...
