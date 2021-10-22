@@ -1,18 +1,10 @@
 ---
-# This playbook is our demo master file
-# The goal is to show how to have a single master file which then
-# includes multiple plays according to some well-designed choreography
-#
-# This file is similar to the one in the AnsibleOnly_Local_and_Cloud folder
-# For now I just kept one play in here but feel free to add more.
 #####################################################
 ### Play 1: Create VMs
-#
-# Here I show the use of import_tasks from child playbooks
 #####################################################
 - name: "Play 1: Create VMs"
   hosts: MyLocalVMs
-  remote_user: vagrant
+  remote_user: ubuntu
   gather_facts: yes
   become_user: no
   tasks:
@@ -25,13 +17,12 @@
   collections:
     - openstack.cloud
   tasks:
-  - include_tasks: tasks/SetUFWrules.yml
   - include_tasks: tasks/download_kafka.yml
+  - include_tasks: tasks/SetUFWrules.yml
   - include_tasks: tasks/CouchDBDownload.yml
 
 - name: "Play 3: Run servers"
   tasks:
-  - include_tasks: tasks/
   - include_tasks: tasks/run_kafka_servers.yml
   - include_tasks: tasks/create_kafka_topics.yml
   - include_tasks: tasks/start_consumer.yml

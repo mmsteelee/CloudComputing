@@ -28,8 +28,9 @@ Vagrant.configure("2") do |config|
   # let's copy our pem file to the vagrant created guest. Change the file name
   # as appropriate in your case and also the file path based on where on your
   # host you have stored this file.
-  config.vm.provision "file", source: "C:/Users/awggs/.ssh/team10-key.pem", destination: "/home/vagrant/.ssh/"
-  config.vm.provision "file", source: "C:/Users/awggs/.ssh/team10-publickey", destination: "/home/vagrant/.ssh/"
+  config.vm.provision "file", source: "C:/Users/awggs/.ssh/team10-key.pem", destination: "~/.ssh/"
+  config.vm.provision "file", source: "C:/Users/awggs/.ssh" + "/known_hosts", destination: "~/.ssh/known_hosts"
+  config.vm.provision "file", source: "C:/Users/awggs/.ssh/team10-publickey", destination: "~/.ssh/"
   config.vm.provision "file", source: "./install_couchdb.sh", destination: "/home/vagrant/"
   config.vm.provision "file", source: "./consumer.py", destination: "/home/vagrant/"
   config.vm.provision "file", source: "./playbook_demo_master.yml", destination: "/home/vagrant/"
