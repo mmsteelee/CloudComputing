@@ -16,7 +16,7 @@
                              # vagrant-created VM else use the
                              # appropriate user name
 
-  gather_facts: yes          # We ask Ansible to collect all facts
+  gather_facts: no          # We ask Ansible to collect all facts
   become_user: no            # No need for sudo as we are not installing anything
 
   tasks:    # the task to be performed

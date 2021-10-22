@@ -10,7 +10,7 @@ clouds:
   "CH-819381":
     auth_type: v3oidcpassword
     auth:
-      auth_url: https://kvm.tacc.chameleoncloud.org:5000
+      auth_url: https://kvm.tacc.chameleoncloud.org:5000/v3
       username: "groeneaw@vanderbilt.edu"
       protocol: openid
       identity_provider: chameleon
@@ -28,7 +28,7 @@ clouds:
     
     auth:
       
-      auth_url: https://kvm.tacc.chameleoncloud.org:5000
+      auth_url: https://kvm.tacc.chameleoncloud.org:5000/v3
       
       application_credential_id: "208ef60e4ae04cdc9fa12f955c282e04"
       application_credential_secret: "bDxBlmdNJoqhRRERRr2SLfU84pTXkolKpRdPnDl1fdpgSj7AMhJyvPpW14QHx3OrBqpHugSIKgO16C-oRhkneg"

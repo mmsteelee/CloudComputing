@@ -1,54 +1,49 @@
 ---
-- name: Create new openstack cloud vm instances
-  hosts: MyLocalVMs
-  remote_user: ubuntu
-  gather_facts: yes
-  become_user: no
-  tasks:
-    - name: create vm2 instance
-      openstack.cloud.server:
-        state: present
-        cloud: CH-819381
-        name: team10-VM2
-        image: CC-Ubuntu20.04
-        availability_zone: nova
-        key_name: team10-key
-        timeout: 200
-        flavor: m1.small
-        security_groups:
-          - ENABLE_HTTP_HTTPS
-          - ENABLE_ICMP
-          - ENABLE_K8s
-          - ENABLE_KAFKA_COUCHDB
-          - ENABLE_KAFKA_COUCH_SSH
-          - ENABLE_SSH
-          - ENABLE_WIREGUARD
-          - ENABLE_ZMQ_APPS
-        floating_ips:
-          - 129.114.26.148
-        nics:
-          - net-name: CH-819381-net
-    - name: launch VM3 instance
-      openstack.cloud.server:
-        state: present
-        cloud: CH-819381
-        name: team10-VM3
-        image: CC-Ubuntu20.04
-        availability_zone: nova
-        key_name: team10-key
-        timeout: 200
-        flavor: m1.small
-        security_groups:
-          - ENABLE_HTTP_HTTPS
-          - ENABLE_ICMP
-          - ENABLE_K8s
-          - ENABLE_KAFKA_COUCHDB
-          - ENABLE_KAFKA_COUCH_SSH
-          - ENABLE_SSH
-          - ENABLE_WIREGUARD
-          - ENABLE_ZMQ_APPS
-        floating_ips:
-          - 129.114.27.112
-        nics:
-          - net-name: CH-819381-net
+  - name: create vm2 instance
+    openstack.cloud.server:
+      state: present
+      cloud: CH-819381
+      name: team10-VM2
+      image: CC-Ubuntu20.04
+      availability_zone: nova
+      key_name: team10-key
+      timeout: 200
+      flavor: m1.small
+      security_groups:
+        - ENABLE_HTTP_HTTPS
+        - ENABLE_ICMP
+        - ENABLE_K8s
+        - ENABLE_KAFKA_COUCHDB
+        - ENABLE_KAFKA_COUCH_SSH
+        - ENABLE_SSH
+        - ENABLE_WIREGUARD
+        - ENABLE_ZMQ_APPS
+      floating_ips:
+        - 129.114.26.148
+      nics:
+        - net-name: CH-819381-net
+  - name: launch VM3 instance
+    openstack.cloud.server:
+      state: present
+      cloud: CH-819381
+      name: team10-VM3
+      image: CC-Ubuntu20.04
+      availability_zone: nova
+      key_name: team10-key
+      timeout: 200
+      flavor: m1.small
+      security_groups:
+        - ENABLE_HTTP_HTTPS
+        - ENABLE_ICMP
+        - ENABLE_K8s
+        - ENABLE_KAFKA_COUCHDB
+        - ENABLE_KAFKA_COUCH_SSH
+        - ENABLE_SSH
+        - ENABLE_WIREGUARD
+        - ENABLE_ZMQ_APPS
+      floating_ips:
+        - 129.114.27.112
+      nics:
+        - net-name: CH-819381-net
+
 ...
