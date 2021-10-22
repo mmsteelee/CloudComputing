@@ -6,5 +6,7 @@
   become_user: no
   tasks:
     - name: Create utilizations topic
-      command: 'bin/kafka-topics.sh --create --topic utilizations --zookeeper localhost:2181'
+      ansible.builtin.shell: 'bin/kafka-topics.sh --create --topic utilizations --zookeeper localhost:2181'
+      args:
+        chdir: /k*
 ...
