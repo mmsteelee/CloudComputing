@@ -1,14 +1,11 @@
 # This is a clouds.yaml file, which can be used by OpenStack tools as a source
-# of configuration on how to connect to Chameleon.
-#
-# If you are only a member of one project, just put this file in
-# ~/.config/openstack/clouds.yaml and tools like the CLI will just work with no
-# further config. (You will need to add your password to the auth section)
-#
-# If you are a member of multiple projects, when invoking the CLI, provide
-# either the env variable OS_CLOUD=<project> or flag --os-cloud=<project> to
-# target your operation to the desired project, where <project> is the name
-# (or nickname, if set) of your project.
+# of configuration on how to connect to a cloud. If this is your only cloud,
+# just put this file in ~/.config/openstack/clouds.yaml and tools like
+# python-openstackclient will just work with no further config. (You will need
+# to add your password to the auth section)
+# If you have more than one cloud account, add the cloud entry to the clouds
+# section of your existing file and you can refer to them by name with
+# OS_CLOUD=openstack or --os-cloud=openstack
 clouds:
   "CH-819381":
     auth_type: v3oidcpassword
@@ -26,3 +23,22 @@ clouds:
     identity_api_version: 3
     project_name: "CH-819381"
     project_domain_name: chameleon
+
+  openstack:
+    
+    auth:
+      
+      auth_url: https://kvm.tacc.chameleoncloud.org:5000
+      
+      application_credential_id: "208ef60e4ae04cdc9fa12f955c282e04"
+      application_credential_secret: "bDxBlmdNJoqhRRERRr2SLfU84pTXkolKpRdPnDl1fdpgSj7AMhJyvPpW14QHx3OrBqpHugSIKgO16C-oRhkneg"
+    
+      
+        
+    region_name: "KVM@TACC"
+        
+      
+    interface: "public"
+    identity_api_version: 3
+    auth_type: "v3applicationcredential"
+    

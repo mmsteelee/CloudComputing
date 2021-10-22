@@ -68,7 +68,15 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "./MyInventory", destination: "~/.ansible/MyInventory"
   config.vm.provision "file", source: "C:/Users/awggs/.config/openstack/clouds.yaml", destination: "~/.config/openstack/clouds.yaml"
   # copy an AWS version
-  # config.vm.provision ...  
+  # config.vm.provision ...
+
+  # other installations
+#   config.vm.provision "shell", inline: <<-SHELL
+#     sudo apt-get update
+#     sudo apt install pip
+#     sudo ansible-galaxy collection install openstack.cloud
+#     sudo python3 -m pip install --upgrade openstacksdk
+#   SHELL
 
   # We now use the Ansible provisioner
   #
@@ -86,12 +94,4 @@ Vagrant.configure("2") do |config|
     ansible.limit = "all"
     ansible.inventory_path = "./MyInventory"  # inventory file
   end
-
-  # other installations
-  config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get update
-    sudo apt install pip
-    sudo ansible-galaxy collection install openstack.cloud
-    sudo python3 -m pip install --upgrade openstack.sdk
-  SHELL
 end
