@@ -24,6 +24,10 @@
   - include_tasks: tasks/download_kafka.yml
   - include_tasks: tasks/CouchDBDownload.yml
   - include_tasks: tasks/SetUFWrules.yml
+  - inclide_tasks: tasks/
+  - inclide_tasks: tasks/run_kafka_servers.yml
+  - inclide_tasks: tasks/create_kafka_topics.yml
+  - inclide_tasks: tasks/start_consumer.yml
 
 ...
 

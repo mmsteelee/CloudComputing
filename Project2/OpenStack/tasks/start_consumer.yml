@@ -1,0 +1,13 @@
+---
+- name: Start up Consumer.py on VM3
+  hosts: VM3
+  remote_user: cc
+  gather_facts: yes
+  become_user: no
+  tasks: 
+    - name: 
+      script: ./consumer.py
+      args:
+        executible: intepreter_python
+
+...
