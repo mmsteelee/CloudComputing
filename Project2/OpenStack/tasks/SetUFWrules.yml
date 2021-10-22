@@ -1,6 +1,6 @@
 ---
 - name: Set UFW rules for both VMS
-  hosts: MyCameleonVMs
+  hosts: MyChameleonVMs
   remote_user: cc
   become: yes
   tasks:
