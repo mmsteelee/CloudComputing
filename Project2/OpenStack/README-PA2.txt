@@ -57,6 +57,23 @@ Matt & Brett - help troubleshooting ansible configuration and playbook writing
 creation of vms: host: mylocalvm, remote user: vagrant
 actions in the cloud vms: host: mychameleonvms, remote user: cc
 
-M2&3:
+M2:
 
+Instantiating the openstack VM's through anisble playbooks (CreateVMs.yml).
 
+We had difficulty with ssh ing into the vms, however this was fixed with an error in the ansible.cfg file.
+
+Downloading Kafka on the VMs took some time to learn what the yml markup language is like and the openstack odules we needed to create the file
+
+Downloading Couchdb took a lot of trial and error, as we had difficulty downloading it with the depricated libraries on the last project
+Ended up using a .sh file to run the commands to download couchdb and copying our local.ini file into the correct path.
+
+Then we edited the server.properties files for both VMs which was pretty trial using ansibles replace module and changing th ebroker ids, listenerst etc.
+Starting the zookeeper and kafka servers were also trivial as it was the same commands used in project 1:
+    - shell: 'bin/zookeeper-server-start.sh config/zookeeper.properties'
+    - shell: 'bin/kafka-server-start.sh config/server.properties'
+
+Creating the utilizations topic was also simple in a ansible playbook by using the shell command
+    shell: "bin/kafka-topics.sh --create --topic utilizations --bootstrap-server localhost:9092"
+
+Consumer code was copied from the vagrant VM into VM3 in a playbook and executed in python in another playbook.
