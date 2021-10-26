@@ -19,12 +19,12 @@ for msg in consumer:
     # Otherwise we will need to demultiplex the incoming data according to the
     # topic coming in.
     
-    #print(msg.value)
+    print(msg.value)
     # couchdb code that was not used
-    couch = couchdb.Server("http://129.114.26.148:5984")
-    db = couch[<our db name>]
-    db_entry = json.load(msg.value)
-    db.save(db_entry)
+    #couch = couchdb.Server("http://129.114.26.148:5984")
+    #db = couch[<our db name>]
+    #db_entry = json.load(msg.value)
+    #db.save(db_entry)
 
 # we are done. As such, we are not going to get here as the above loop
 # is a forever loop.
