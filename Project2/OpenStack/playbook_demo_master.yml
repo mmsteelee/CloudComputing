@@ -16,16 +16,17 @@
   become: yes
   collections:
     - openstack.cloud
+
   tasks:
-  - include_tasks: tasks/download_kafka.yml
-  - include_tasks: tasks/SetUFWrules.yml
-  - include_tasks: tasks/CouchDBDownload.yml
+    - include_tasks: tasks/SetUFWrules.yml
+    - include_tasks: tasks/download_kafka.yml
+    - include_tasks: tasks/CouchDBDownload.yml
 
 - name: "Play 3: Run servers"
   tasks:
-  - include_tasks: tasks/run_kafka_servers.yml
-  - include_tasks: tasks/create_kafka_topics.yml
-  - include_tasks: tasks/start_consumer.yml
+    - include_tasks: tasks/run_kafka_servers.yml
+    - include_tasks: tasks/create_kafka_topics.yml
+    - include_tasks: tasks/start_consumer.yml
 
 ...
 
