@@ -17,9 +17,17 @@
   collections:
     - openstack.cloud
 
+#  tasks:
+#    - include_tasks: tasks/SetUFWrules.yml
+#    - include_tasks: tasks/download_kafka.yml
+
+
+- name: "Play 2b: couchdb"
+  remote_user: cc
+  hosts: VM3
+  collections:
+    - openstack.cloud
   tasks:
-    - include_tasks: tasks/SetUFWrules.yml
-    - include_tasks: tasks/download_kafka.yml
     - include_tasks: tasks/CouchDBDownload.yml
 
 - name: "Play 3: Run servers"
