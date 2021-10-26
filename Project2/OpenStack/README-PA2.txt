@@ -99,6 +99,7 @@ Matt:
 	- configure server.properties for both vms
 	- set up and run kafka servers
 	- copying/starting consumer code in vm3
+- troubleshooting kafka server configurations
 Brett:
 - did background research into how yaml files are/need to be written
 

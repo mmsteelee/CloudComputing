@@ -8,11 +8,11 @@
   collections:
     - openstack.cloud
   tasks:
-  - include_tasks: tasks/CreateVMs.yml
+#  - include_tasks: tasks/CreateVMs.yml
 
-  - name: Pause for 2 minutes to build app cache
-    pause:
-      minutes: 2
+#  - name: Pause for 2 minutes to build app cache
+#    pause:
+#      minutes: 2
 
 - name: "Play 2: Firewall Settings and Downloads"
   hosts: MyChameleonVMs
