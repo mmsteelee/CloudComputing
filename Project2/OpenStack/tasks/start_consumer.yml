@@ -5,9 +5,7 @@
   gather_facts: yes
   become_user: no
   tasks: 
-    - name: 
-      script: consumer.py
-      args:
-        executible: intepreter_python
+    - name: run python
+      shell: 'python3 consumer.py'
 
 ...
