@@ -1,62 +1,30 @@
 ---
+- name: Importing couchdb key
+  apt_key:
+    url: https://couchdb.apache.org/repo/keys.asc
+    keyring: /usr/share/keyrings/couchdb-archive-keyring.gpg
+- name: Adding couchdb repo
+  apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/couchdb-archive-keyring.gpg] https://apache.jfrog.io/artifactory/couchdb-deb/ focal main
+    update_cache: yes
 - name: Update Cache
   apt:
     update_cache: yes
-- name: Running install_couchdb.sh
-  ansible.builtin.script: /vagrant/install_couchdb.sh
-- name: Update Cache
-  apt: 
-    update_cache: yes
-- name: intall couchdb
+- name: Install couchdb
   apt: 
     name: couchdb
     state: present
-- name: copy local.ini file to creat admin user
+- name: Copy local.ini file to create admin user
   copy: 
     src: /vagrant/local.ini
     dest: /opt/couchdb/etc/local.ini
 - name: Change Local.ini permisions
   ansible.builtin.command: chmod 640 /opt/couchdb/etc/local.ini
-- name: install couchdb python packages
-  shell: 'pip3 install couchdb'
-
-#- name: Add couchdb apt key
-#  apt_key:
-#    url: https://couchdb.apache.org/repo/keys.asc  # URL to retrieve from
-#    state: present   # this is default
-#    keyring: /usr/share/keyrings/couchdb-repo-keyring.gpg
-#  become: yes
-
-#- name: Add couchdb rep to apt
-#  apt_repository:
-#    repo: "deb [signed-by=/usr/share/keyrings/couchdb-repo-keyring.gpg] https://apache.jfrog.io/artifactory/couchdb-deb focal main"
-#    state: present
-#    filename: couchdb.list
-#    update_cache: no  # we do not update cache as the signing key is not added yet.
-#  become: yes
-#
-#- name: Install CouchDB
-#  apt:
-#    name: "{{ item }}"
-#    state: latest
-#    update_cache: yes
-#  loop:
-#    - couchdb
-#  become: yes
-
-# now initialize couchdb
-#- name: Enable CouchDB Repository 01
-#  shell: "curl -L https://couchdb.apache.org/repo/bintray-pubkey.asc | sudo apt-key add "
-#
-#  - name: Enable CouchDB Repository 02
-#    shell: "echo "deb https://apache.bintray.com/couchdb-deb focal main" | sudo tee -a /etc/apt/sources.list"
-#
-#  - name: Enable CouchDB Repository 03
-#    shell: "curl https://couchdb.apache.org/repo/keys.asc | gpg --dearmor | sudo tee /usr/share/keyrings/couchdb-archive-keyring.gpg >/dev/null 2>&1  		source /etc/os-release"
-#
-#    - name: Apt-Update
-#      shell: "sudo apt update"
-#
-#    - name: Install CouchDB
-#      shell: "sudo apt install couchdb"
+- name: restart couchdb service
+  systemd:
+    name: couchdb
+    state: restarted
+    daemon_reload: yes
+- name: Install Couchdb python packages
+  shell: "pip install couchdb"
 ...

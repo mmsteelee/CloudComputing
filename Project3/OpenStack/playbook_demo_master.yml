@@ -9,21 +9,20 @@
     - openstack.cloud
   tasks:
 #  - include_tasks: tasks/CreateVMs.yml
-#
+
 #  - name: Pause for 2 minutes to build app cache
 #    pause:
 #      minutes: 2
-#
-#- name: "Play 2: Firewall Settings and Downloads"
-#  hosts: MyChameleonVMs
-#  remote_user: cc
-#  become: yes
-#  collections:
-#    - openstack.cloud
-#
-#  tasks:
-#    - include_tasks: tasks/SetUFWrules.yml
-#    - include_tasks: tasks/download_kafka.yml
+
+- name: "Play 2: Firewall Settings and Downloads"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  become: yes
+  collections:
+    - openstack.cloud
+  tasks:
+    - include_tasks: tasks/SetUFWrules.yml
+    - include_tasks: tasks/download_kafka.yml
 
 
 - name: "Play 2b: couchdb"
@@ -33,7 +32,7 @@
   collections:
     - openstack.cloud
   tasks:
-#    - include_tasks: tasks/CouchDBDownload.yml
+    - include_tasks: tasks/CouchDBDownload.yml
 
 - name: "Play 3a: config VM2 servers"
   hosts: VM2
@@ -41,9 +40,9 @@
   gather_facts: yes
   become: yes
   tasks:
-#    - include_tasks: tasks/edit_server_file_vm2.yml
-#    - include_tasks: tasks/run_kafka_server_vm2.yml
-#    - include_tasks: tasks/create_kafka_topics.yml
+    - include_tasks: tasks/edit_server_file_vm2.yml
+    - include_tasks: tasks/run_kafka_server_vm2.yml
+    - include_tasks: tasks/create_kafka_topics.yml
 
 - name: "Play 3b: config vm3 servers"
   hosts: VM3
@@ -51,8 +50,8 @@
   gather_facts: yes
   become: yes
   tasks:
-#    - include_tasks: tasks/edit_server_file_vm3.yml
-#    - include_tasks: tasks/run_kafka_server_vm3.yml
+    - include_tasks: tasks/edit_server_file_vm3.yml
+    - include_tasks: tasks/run_kafka_server_vm3.yml
     - include_tasks: tasks/copy_consumer.yml
     - include_tasks: tasks/start_consumer.yml
 ...

@@ -9,7 +9,7 @@
       availability_zone: nova
       key_name: team10-key
       timeout: 500
-      flavor: m1.medium
+      flavor: m1.small
       security_groups:
         - ENABLE_HTTP_HTTPS
         - ENABLE_ICMP

@@ -26,4 +26,7 @@
 
 - name: extract kafka
   shell: "tar -xvzf kafka/kafka.tgz --strip 1"
+
+- name: Install Kafka-python packages
+  shell: "pip install kafka-python"
 ...
