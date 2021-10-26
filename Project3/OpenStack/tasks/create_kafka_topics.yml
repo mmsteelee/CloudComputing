@@ -1,0 +1,12 @@
+---
+- name: Create kafka topic
+  hosts: VM2
+  remote_user: cc
+  gather_facts: yes
+  become_user: no
+  tasks:
+    - name: Create utilizations topic
+      ansible.builtin.shell: 'bin/kafka-topics.sh --create --topic utilizations --zookeeper localhost:2181'
+      args:
+        chdir: /k*
+...

@@ -1,0 +1,12 @@
+---
+#
+# Author: Austin Groeneveld
+#
+# In this playbook we get facts about our local VM using master playbook
+#
+  - name: Generate VMs          # This is just for printing out.
+
+
+
+...
+
