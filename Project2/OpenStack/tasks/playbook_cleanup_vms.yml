@@ -2,11 +2,15 @@
 #
 # Author: Austin Groeneveld
 #
-# In this playbook we get facts about our local VM using master playbook
 #
-  - name: Generate VMs          # This is just for printing out.
+- name: Cleanup VM2          # This is just for printing out.
+  openstack.cloud.server:
+    name: team10-VM2-ansible
+    state: absent
 
-
-
+- name: Cleanup VM3          # This is just for printing out.
+  openstack.cloud.server:
+    name: team10-VM3-ansible
+    state: absent
 ...
 
