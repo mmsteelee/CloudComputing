@@ -3,7 +3,7 @@
   replace:
     dest: config/server.properties
     regexp: '#listeners=PLAINTEXT://:9092'
-    replace: 'listeners=PLAINTEXT://10.212.96.3:9092'
+    replace: 'listeners=PLAINTEXT://:9092'
 
 - name: Change advertised listeners
   replace:
