@@ -1,17 +1,11 @@
 ---
 - name: Run zookeeper and kafka servers on VM2
-  hosts: VM2
-  remote_user: cc
-  gather_facts: yes
-  become_user: no
-  tasks:
-    - name: Launch zookeeper
-      shell: 'bin/zookeeper-server-start.sh config/zookeeper.properties'
-      async: 86400 #Run for 24hours
-      poll: 0
-        
-    - name: Start kafka on VM2
-      shell: 'bin/kafka-server-start.sh config/server.properties'
-      async: 86400 #Run for 24hours
-      poll: 0
+  shell: 'bin/zookeeper-server-start.sh config/zookeeper.properties'
+  async: 86400 #Run for 24hours
+  poll: 0
+
+- name: Start kafka on VM2
+  shell: 'bin/kafka-server-start.sh config/server.properties'
+  async: 86400 #Run for 24hours
+  poll: 0
 ...

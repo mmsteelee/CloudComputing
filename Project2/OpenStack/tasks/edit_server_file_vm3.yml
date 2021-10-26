@@ -25,7 +25,7 @@
 
 - name: Change broker ID
   replace:
-    dest: /config/server.properties
+    dest: config/server.properties
     regexp: 'broker.id=0'
     replace: 'broker.id=1'
 ...

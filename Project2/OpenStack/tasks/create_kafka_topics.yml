@@ -1,6 +1,6 @@
 ---
 - name: Create kafka topic Create utilizations topic
-      shell: 'bin/kafka-topics.sh --create --topic utilizations --zookeeper localhost:2181'
-      async: 15
-      poll: 0
+  shell: 'bin/kafka-topics.sh --create --topic utilizations --zookeeper localhost:2181'
+  async: 15
+  poll: 0
 ...

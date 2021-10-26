@@ -1,7 +1,7 @@
 ---
-- name: Update Cache
-  apt: 
-    update_cache: yes
+#- name: Update Cache
+#  apt:
+#    update_cache: yes
 - name: Running install_couchdb.sh
   ansible.builtin.script: /vagrant/install_couchdb.sh
 - name: Update Cache

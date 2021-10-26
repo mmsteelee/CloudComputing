@@ -28,8 +28,8 @@
   become: yes
   collections:
     - openstack.cloud
-#  tasks:
-#    - include_tasks: tasks/CouchDBDownload.yml
+  tasks:
+    - include_tasks: tasks/CouchDBDownload.yml
 
 - name: "Play 3a: config VM2 servers"
   hosts: VM2
