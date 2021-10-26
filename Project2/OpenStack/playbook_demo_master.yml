@@ -32,6 +32,7 @@
 
 - name: "Play 3: Run servers"
   tasks:
+    - include_tasks: tasks/edit_server_file.yml
     - include_tasks: tasks/run_kafka_servers.yml
     - include_tasks: tasks/create_kafka_topics.yml
     - include_tasks: tasks/start_consumer.yml
