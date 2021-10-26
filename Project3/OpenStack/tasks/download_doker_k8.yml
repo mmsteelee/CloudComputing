@@ -1,0 +1,29 @@
+---
+- name: Apt update
+  apt:
+    update_cache: yes
+- name: Install Docker
+  shell: "apt install docker.io"
+- name: Start Docker
+  shell: "systemctl start docker"
+- name: Enable docker on reboot
+  shell: "systemctl enable docker"
+- name: Dependancies
+  shell: "apt install -y apt-transport-https ca-certificates curl"
+- name: Curl K8
+  shell: "curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+- name: Echo
+  shell: 'echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg]  https://apt.kubernetes.io/ kubernetes-xenialmain" | sudotee -a /etc/apt/sources.list.d/kubernetes.list'
+- name: Apt update
+  apt:
+    update_cache: yes
+- name: Install K8
+  shell: "apt install kubeadm kubelet kubectl kubernetes-cni"
+
+- name: Docker Modification
+  shell: "systemctl daemon-reload"
+
+- name: Docker Modification
+  shell: "systemctlrestart docker"
+  
+...

@@ -1,0 +1,11 @@
+---
+- name: Run zookeeper and kafka servers on VM2
+  shell: 'bin/zookeeper-server-start.sh config/zookeeper.properties'
+  async: 86400 #Run for 24hours
+  poll: 0
+
+- name: Start kafka on VM2
+  shell: 'bin/kafka-server-start.sh config/server.properties'
+  async: 86400 #Run for 24hours
+  poll: 0
+...
