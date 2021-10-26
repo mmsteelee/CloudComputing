@@ -25,4 +25,6 @@
     name: couchdb
     state: restarted
     daemon_reload: yes
+- name: Install Couchdb python packages
+  shell: "pip install couchdb"
 ...
