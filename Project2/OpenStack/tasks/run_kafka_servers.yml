@@ -7,13 +7,9 @@
   tasks:
     - name: Launch zookeeper
       ansible.builtin.shell: 'bin/zookeeper-server-start.sh config/zookeeper.properties'
-      args:
-        chdir: /k*
         
     - name: Start kafka on VM2
-      ansible.builtin.shell: 'bin/kafka-server-start.sh config/server.properties'
-      args:
-        chdir: /k*
+      shell: 'bin/kafka-server-start.sh config/server.properties'
 
 - name: Run kafka on VM3
   hosts: VM3
@@ -22,7 +18,5 @@
   become_user: no
   tasks:
     - name: Start kafka on VM3
-      ansible.builtin.shell: 'bin/kafka-server-start.sh config/server.properties'
-      args:
-        chdir: /k* 
+      shell: 'bin/kafka-server-start.sh config/server.properties'
 ...
