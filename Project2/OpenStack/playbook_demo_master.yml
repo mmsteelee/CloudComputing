@@ -9,6 +9,10 @@
     - openstack.cloud
   tasks:
 #  - include_tasks: tasks/CreateVMs.yml
+#
+#  - name: Pause for 5 minutes to build app cache
+#    pause:
+#      minutes: 2
 
 - name: "Play 2: Firewall Settings and Downloads"
   hosts: MyChameleonVMs
@@ -17,9 +21,9 @@
   collections:
     - openstack.cloud
 
-#  tasks:
-#    - include_tasks: tasks/SetUFWrules.yml
-#    - include_tasks: tasks/download_kafka.yml
+  tasks:
+    - include_tasks: tasks/SetUFWrules.yml
+    - include_tasks: tasks/download_kafka.yml
 
 
 - name: "Play 2b: couchdb"
@@ -50,6 +54,5 @@
     - include_tasks: tasks/edit_server_file_vm3.yml
     - include_tasks: tasks/run_kafka_server_vm3.yml
     - include_tasks: tasks/start_consumer.yml
-
 ...
 

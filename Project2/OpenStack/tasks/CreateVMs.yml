@@ -8,7 +8,7 @@
       network: CH-819381-net
       availability_zone: nova
       key_name: team10-key
-      timeout: 200
+      timeout: 300
       flavor: m1.small
       security_groups:
         - ENABLE_HTTP_HTTPS
@@ -30,7 +30,7 @@
       network: CH-819381-net
       availability_zone: nova
       key_name: team10-key
-      timeout: 200
+      timeout: 300
       flavor: m1.small
       security_groups:
         - ENABLE_HTTP_HTTPS
