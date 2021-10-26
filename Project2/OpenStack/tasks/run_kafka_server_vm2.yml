@@ -14,15 +14,4 @@
       shell: 'bin/kafka-server-start.sh config/server.properties'
       async: 86400 #Run for 24hours
       poll: 0
-
-- name: Run kafka on VM3
-  hosts: VM3
-  remote_user: cc
-  gather_facts: yes
-  become_user: no
-  tasks:
-    - name: Start kafka on VM3
-      shell: 'kafka/kafka_2.13-3.0.0/bin/kafka-server-start.sh kafka/kafka_2.13-3.0.0/config/server.properties'
-      async: 86400 #Run for 24hours
-      poll: 0
 ...
