@@ -9,5 +9,4 @@
       script: consumer.py
       args:
         executible: intepreter_python
-
 ...
