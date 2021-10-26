@@ -1,5 +1,5 @@
 ---
-- name: Download Kafka to VMs
+- hosts: MyChameleonVMs
   remote_user: cc
   collections:
     - openstack.cloud

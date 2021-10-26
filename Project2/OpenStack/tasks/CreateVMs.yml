@@ -5,6 +5,7 @@
       cloud: openstack
       name: team10-VM2-ansible
       image: CC-Ubuntu20.04
+      network: CH-819381-net
       availability_zone: nova
       key_name: team10-key
       timeout: 200
@@ -20,14 +21,13 @@
         - ENABLE_ZMQ_APPS
       floating_ips:
         - 129.114.26.148
-      nics:
-        - net-name: CH-819381-net
   - name: launch VM3 instance
     openstack.cloud.server:
       state: present
       cloud: openstack
       name: team10-VM3-ansible
       image: CC-Ubuntu20.04
+      network: CH-819381-net
       availability_zone: nova
       key_name: team10-key
       timeout: 200
@@ -43,7 +43,4 @@
         - ENABLE_ZMQ_APPS
       floating_ips:
         - 129.114.27.112
-      nics:
-        - net-name: CH-819381-net
-
 ...
