@@ -25,6 +25,7 @@
 - name: "Play 2b: couchdb"
   remote_user: cc
   hosts: VM3
+  become: yes
   collections:
     - openstack.cloud
   tasks:
