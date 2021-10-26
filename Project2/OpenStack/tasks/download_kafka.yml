@@ -1,23 +1,25 @@
 ---
-- hosts: MyChameleonVMs
-  remote_user: cc
+- remote_user: cc
+  become: yes
   collections:
     - openstack.cloud
-  become: yes
   tasks:
     - name: Kafka Download
       apt:
         update_cache: yes
         force_apt_get: yes
-        cache_valid_time: 5000
+        cache_valid_time: 3600
+
     - name: upgrade
       apt:
         upgrade: dist
         force_apt_get: yes
+
     - name: install java
       apt:
         name: openjdk-11-jre-headless
         state: latest
+
     - name: remove kafka dir
       shell: "rm -rf kafka"
 
