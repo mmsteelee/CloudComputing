@@ -1,8 +1,4 @@
 ---
-#
-# Author: Austin Groeneveld
-#
-#
 - name: Cleanup VM2          # This is just for printing out.
   openstack.cloud.server:
     name: team10-VM2-ansible
