@@ -21,38 +21,36 @@
   collections:
     - openstack.cloud
   tasks:
-    - include_tasks: tasks/SetUFWrules.yml
-    - include_tasks: tasks/download_kafka.yml
+#    - include_tasks: tasks/SetUFWrules.yml
+#    - include_tasks: tasks/download_kafka.yml
+    - include_tasks: tasks/download_dockerK8.yml
 
-
-- name: "Play 2b: couchdb"
-  remote_user: cc
-  hosts: VM3
-  become: yes
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/CouchDBDownload.yml
-
-- name: "Play 3a: config VM2 servers"
-  hosts: VM2
-  remote_user: cc
-  gather_facts: yes
-  become: yes
-  tasks:
-    - include_tasks: tasks/edit_server_file_vm2.yml
-    - include_tasks: tasks/run_kafka_server_vm2.yml
-    - include_tasks: tasks/create_kafka_topics.yml
-
-- name: "Play 3b: config vm3 servers"
-  hosts: VM3
-  remote_user: cc
-  gather_facts: yes
-  become: yes
-  tasks:
-    - include_tasks: tasks/edit_server_file_vm3.yml
-    - include_tasks: tasks/run_kafka_server_vm3.yml
-    - include_tasks: tasks/copy_consumer.yml
-    - include_tasks: tasks/start_consumer.yml
+#- name: "Play 2b: couchdb"
+#  remote_user: cc
+#  hosts: VM3
+#  become: yes
+#  collections:
+#    - openstack.cloud
+#  tasks:
+#    - include_tasks: tasks/CouchDBDownload.yml
+#- name: "Play 3a: config VM2 servers"
+#  hosts: VM2
+#  remote_user: cc
+#  gather_facts: yes
+#  become: yes
+#  tasks:
+#    - include_tasks: tasks/edit_server_file_vm2.yml
+#    - include_tasks: tasks/run_kafka_server_vm2.yml
+#    - include_tasks: tasks/create_kafka_topics.yml
+#- name: "Play 3b: config vm3 servers"
+#  hosts: VM3
+#  remote_user: cc
+#  gather_facts: yes
+#  become: yes
+#  tasks:
+#    - include_tasks: tasks/edit_server_file_vm3.yml
+#    - include_tasks: tasks/run_kafka_server_vm3.yml
+#    - include_tasks: tasks/copy_consumer.yml
+#    - include_tasks: tasks/start_consumer.yml
 ...
 

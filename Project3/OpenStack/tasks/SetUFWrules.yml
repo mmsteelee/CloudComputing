@@ -7,4 +7,7 @@
 
 - name: Allow CouchDB
   shell: "sudo ufw allow proto tcp from any to any port 5984"
+
+- name: Allow Docker
+  shell: "sudo ufw allow proto tcp from any to any port 5000"
 ...
