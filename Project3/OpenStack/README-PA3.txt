@@ -7,6 +7,11 @@ added playbook to install docker and Kubernetes on ChameleonVMs
 
 K8
 
+K8
+
+sudo ufw limit 10255
+sudo ufw limit 10256
+
 On vm2 
 
 sudo swapoff -a
@@ -21,4 +26,18 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
+kubeadm token create --print-join-command
+
+VM3
+
+Use the join command printed out by the command above
+
+VM2 tainting master:
+
+Apt-get install jq
+
+kubectl get nodes -o json | jq '.items[].spec.taints'
+
+kubectl taint nodes kubemaster node-role.kubernetes.io/master:NoSchedule
