@@ -34,6 +34,15 @@
   tasks:
     - include_tasks: tasks/CouchDBDownload.yml
 
+- name: "Play 2c: Docker and Kubernetes"
+  remote_user: cc
+  hosts: MyChameleonVMs
+  become: yes
+  collections:
+    - openstack.cloud
+  tasks: 
+    - include_tasks: tasks/download_dockerK8.yml
+
 - name: "Play 3a: config VM2 servers"
   hosts: VM2
   remote_user: cc
