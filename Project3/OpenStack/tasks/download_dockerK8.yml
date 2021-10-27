@@ -50,6 +50,13 @@
 - name: Disable K8 swap
   command: swapoff -a
 
+- name: Set Aliases
+  replace:
+    path: /etc/hosts
+    regexp: 'ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock'
+    replace: 'ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd'
+
+
 - name: Docker Modification
   shell: "systemctl daemon-reload"
 
