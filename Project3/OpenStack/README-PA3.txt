@@ -47,4 +47,5 @@ kubectl get nodes -o json | jq '.items[].spec.taints'
 
 kubectl taint nodes kubemaster node-role.kubernetes.io/master:NoSchedule-
 
+scp /Users/mattsteele/School/CS\ 4287/CloudComputingCourse/ScaffoldingCode/DockerCluster_wKubernetes/Deployment/nginx-deployment.yaml cc@129.114.26.148:
 
