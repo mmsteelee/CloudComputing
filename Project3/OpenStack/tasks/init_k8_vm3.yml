@@ -1,0 +1,3 @@
+- name: Join VM2 kube
+  become: no
+  command: "{{ join_cmd }}" --node-name kubeworker2
