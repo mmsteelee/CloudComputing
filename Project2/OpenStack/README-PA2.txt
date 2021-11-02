@@ -127,8 +127,6 @@ Brett: research into ansible documentation as to what commands are needed in eac
 Effort Expended:
 - Downloading Couchdb took a lot of trial and error, as we had difficulty downloading it with the depricated libraries on the last project
 - tried new approach using a .sh file to run the commands to download couchdb and copying our local.ini file into the correct path.
-- errors:
-	- malformed entry with couchdb install - see line in install-cdb.sh
-	- local.ini file format/content; for now its mostly scaffolding we found online
-		- we never wrote this for PA1 as we never got the couchdb download to work
-- potentially syntactic errors?
+- eventually got couchdb running (can be seen with top command in VM3), but never the web client, so we could not view results of
+    producer dump getting consumed
+- for the demo video, just used print command in consumer.py

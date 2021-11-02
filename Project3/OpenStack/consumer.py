@@ -20,21 +20,21 @@ for msg in consumer:
     # topic coming in.
 
     # placeholder code for M2
-    # print(msg.value)
+    print(msg.value)
 
     # couchdb code for M3
-    couch = couchdb.Server("http://129.114.27.112:5984")
+    # couch = couchdb.Server("http://129.114.27.112:5984")
 
     # username/password if necessary
     # server.resource.credentials = ("username", "password")
 
     # create db
-    if "cdb-db" not in couch:
-        couch.create("cdb-db")
-
-    db = couch["cdb-db"]
-    db_entry = json.load(msg.value)
-    db.save(db_entry)
+    # if "cdb-db" not in couch:
+    #     couch.create("cdb-db")
+    #
+    # db = couch["cdb-db"]
+    # db_entry = json.load(msg.value)
+    # db.save(db_entry)
 
 # we are done. As such, we are not going to get here as the above loop
 # is a forever loop.

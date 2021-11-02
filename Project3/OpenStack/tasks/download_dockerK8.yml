@@ -18,19 +18,6 @@
     name: docker
 
 # kubernetes install
-#- name: K8 Dependancies
-#  shell: "apt install apt-transport-https curl"
-#- name: Curl K8 key
-#  shell: "curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg"
-#- name: Add K8 key
-#  shell: 'echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg]  https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list'
-
-#- name: Add Kubernetes Repository
-#  apt_repository:
-#    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
-#    state: present
-#    filename: kubernetes
-#    mode: 0600
 - name: Installing Kubernetes Cluster Packages.
   apt:
     pkg:
@@ -41,12 +28,6 @@
     state: latest
     update_cache: true
 
-#- name: Apt update
-#  shell: "apt update"
-#
-#- name: Install K8
-#  shell: "apt install kubeadm kubelet kubectl kubernetes-cni"
-
 - name: Disable K8 swap
   command: swapoff -a
 
@@ -55,7 +36,6 @@
     path: /etc/hosts
     regexp: 'ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock'
     replace: 'ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd'
-
 
 - name: Docker Modification
   shell: "systemctl daemon-reload"
