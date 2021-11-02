@@ -1,7 +1,5 @@
 - name: swapoff
   shell: "swapoff -a"
-- name: reset
-  shell: "kubeadm reset"
 - name: init
   shell: "kubeadm init --node-name kubemaster --pod-network-cidr=10.244.0.0/16"
 - name: mkdir
