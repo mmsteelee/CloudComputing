@@ -1,17 +1,16 @@
 ---
 - name: init
-  shell: "kubeadm init --node-name kubemaster --pod-network-cidr=10.244.0.0/16"
+  shell: "sudo kubeadm init --node-name kubemaster --pod-network-cidr=10.244.0.0/16"
 
 - name: mkdir
   become: no
   shell: "mkdir -p $HOME/.kube"
 
 - name: config
-  become: yes
-  shell: "cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
+  shell: "sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
 
 - name: ownership
-  shell: "chown $(id -u):$(id -g) $HOME/.kube/config"
+  shell: "sudo chown $(id -u):$(id -g) $HOME/.kube/config"
 
 - name: Flannel
   become: no

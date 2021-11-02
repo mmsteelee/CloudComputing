@@ -85,3 +85,6 @@ there are issues getting service-job to work, involving pushing to the private r
 
 Milestone 2:
 automation of k8 initialization
+
+when troubleshooting k8 vm2 init:
+run sudo kubeadm reset on vm2 before each new init attempt

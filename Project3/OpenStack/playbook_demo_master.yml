@@ -21,13 +21,9 @@
   collections:
     - openstack.cloud
   tasks:
-    - include_tasks: tasks/SetUFWrules.yml
-    - include_tasks: tasks/download_kafka.yml
-    - include_tasks: tasks/download_dockerK8.yml
-
-- name: "Play 2b: couchdb"
-  remote_user: cc
-  hosts: VM3
+#    - include_tasks: tasks/SetUFWrules.yml
+#    - include_tasks: tasks/download_kafka.yml
+#    - include_tasks: tasks/download_dockerK8.yml
 
 - name: "Play 3a: Init Cluster on VM2"
   hosts: VM2
