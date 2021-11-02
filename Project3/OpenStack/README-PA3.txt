@@ -16,6 +16,7 @@ K8
 
 sudo ufw limit 10255
 sudo ufw limit 10256
+
 sudo ufw limit 2379:2380/tcp
 sudo ufw limit 6443/tcp
 sudo ufw limit 10250:10252/tcp

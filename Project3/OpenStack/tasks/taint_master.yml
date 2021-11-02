@@ -1,3 +1,5 @@
+---
 - name: taint master
   shell: "kubectl taint nodes kubemaster node-role.kubernetes.io/master:NoSchedule-"
+...
   

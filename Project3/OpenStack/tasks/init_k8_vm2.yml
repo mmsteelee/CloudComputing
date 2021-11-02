@@ -1,23 +1,27 @@
-- name: swapoff
-  shell: "swapoff -a"
+---
 - name: reset
   shell: "kubeadm reset"
+
 - name: init
   shell: "kubeadm init --node-name kubemaster --pod-network-cidr=10.244.0.0/16"
+
 - name: mkdir
   become: no
   shell: "mkdir -p $HOME/.kube"
+
 - name: config
   become: yes
   shell: cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+
 - name: ownership
   shell: "chown $(id -u):$(id -g) $HOME/.kube/config"
+
 - name: Flannel
   become: no
   shell: "kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
+
 - name: print join cmd
   become: no
   shell: "kubeadm token create --print-join-command + --node-name kubeworker2"
   register: join_cmd
-
-                
+...
