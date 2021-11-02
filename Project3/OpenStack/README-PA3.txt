@@ -82,3 +82,6 @@ there was confusion in how to get the clusters configured, but once we spent eno
 the deployment and job demonstrations were simple enough. 
 there are issues getting service-job to work, involving pushing to the private registries. 
 
+
+Milestone 2:
+automation of k8 initialization

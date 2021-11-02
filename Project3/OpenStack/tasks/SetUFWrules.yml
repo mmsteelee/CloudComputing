@@ -16,4 +16,28 @@
 
 - name: Allow K8_2
   shell: "sudo ufw allow proto tcp from any to any port 10256"
+
+- name: Allow K8 dependencies
+  shell: "sudo ufw limit 2379:2380/tcp"
+
+- name: Allow K8 dependencies
+  shell: "sudo ufw limit 6443/tcp"
+
+- name: Allow K8 dependencies
+  shell: "sudo ufw limit 10250:10252/tcp"
+
+- name: Allow K8 dependencies
+  shell: "sudo ufw limit 8285/udp"
+
+- name: Allow K8 dependencies
+  shell: "sudo ufw limit 8472/udp"
+
+- name: Allow K8 dependencies
+  shell: "sudo ufw limit 30000:30004/tcp"
+
+- name: Allow K8 dependencies
+  shell: "sudo ufw limit 30005/tcp"
+
+- name: Allow K8 dependencies
+  shell: "sudo ufw limit 30006/tcp"
 ...
