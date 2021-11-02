@@ -10,4 +10,10 @@
 
 - name: Allow Docker
   shell: "sudo ufw allow proto tcp from any to any port 5000"
+
+- name: Allow K8_1
+  shell: "sudo ufw allow proto tcp from any to any port 10255"
+
+- name: Allow K8_2
+  shell: "sudo ufw allow proto tcp from any to any port 10256"
 ...
