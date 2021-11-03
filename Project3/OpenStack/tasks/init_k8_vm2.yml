@@ -3,7 +3,6 @@
   shell: "sudo kubeadm init --node-name kubemaster --pod-network-cidr=10.244.0.0/16"
 
 - name: mkdir
-  become: no
   shell: "mkdir -p $HOME/.kube"
 
 - name: config
@@ -14,10 +13,10 @@
 
 - name: Flannel
   become: no
-  shell: "kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
+  shell: "sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
 
 - name: print join cmd
   become: no
-  shell: "kubeadm token create --print-join-command + --node-name kubeworker2"
+  shell: "sudo kubeadm token create --print-join-command + --node-name kubeworker2"
   register: join_cmd
 ...

@@ -88,3 +88,6 @@ automation of k8 initialization
 
 when troubleshooting k8 vm2 init:
 run sudo kubeadm reset on vm2 before each new init attempt
+delete .kube dir: sudo rm -r .kube/
+
+localhost connection error usually means we tried a kube command w/o sudo
