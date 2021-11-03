@@ -12,11 +12,12 @@
   shell: "sudo chown $(id -u):$(id -g) $HOME/.kube/config"
 
 - name: Flannel
-  become: no
-  shell: "sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
+  shell: "kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
 
-- name: print join cmd
-  become: no
-  shell: "sudo kubeadm token create --print-join-command + --node-name kubeworker2"
-  register: join_cmd
+- name: get join token
+  shell: "kubeadm token create --print-join-command"
+  register: output
+
+- name: Storing Logs and Generated token for future purpose.
+  local_action: copy content={{ output.stdout }} dest={{ token_file }}
 ...

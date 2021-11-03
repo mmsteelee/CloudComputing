@@ -1,5 +1,8 @@
 ---
-- name: Join VM2 kube
-  become: no
-  command: "{{ join_cmd.stdout }}" --node-name kubeworker2
+- name: Copying token to worker nodes
+  copy: src={{ token_file }} dest=join_token
+
+- name: Joining worker nodes with kubernetes master
+  become: yes
+  shell: "echo --node-name kubeworker2 | cat join_token -"
 ...
