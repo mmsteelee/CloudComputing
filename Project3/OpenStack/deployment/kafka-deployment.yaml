@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: 
   name: kafka-deployment-1
-  namespace: kafka-cluster
 spec:
   serviceName: kafka1
   replicas: 1
@@ -34,7 +33,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kafka-deployment-2
-  namespace: kafka-cluster
 spec:
   serviceName: kafka2
   replicas: 1
@@ -65,7 +63,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kafka-deployment-3
-  namespace: kafka-cluster
 spec:
   serviceName: kafka3
   replicas: 1
@@ -98,7 +95,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kafka-deployment-4
-  namespace: kafka-cluster
 spec:
   serviceName: kafka4
   replicas: 1
@@ -129,7 +125,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kafka-deployment-5
-  namespace: kafka-cluster
 spec:
   serviceName: kafka5
   replicas: 1
