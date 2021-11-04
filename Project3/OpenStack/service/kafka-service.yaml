@@ -4,9 +4,9 @@ kind: Service
 metadata: 
   name: kafka1
 spec:
+  type: NodePort
   selector:
     app: kafka-broker-1
-  type: NodePort
   ports:
     - port: 9092
       targetPort: 9092
@@ -18,9 +18,9 @@ kind: Service
 metadata:
   name: kafka2
 spec:
+  type: NodePort
   selector:
     app: kafka-broker-2
-  type: NodePort
   ports:
     - port: 9092
       targetPort: 9092
@@ -32,9 +32,9 @@ kind: Service
 metadata:
   name: kafka3
 spec:
+  type: NodePort
   selector:
     app: kafka-broker-3
-  type: NodePort
   ports:
     - port: 9092
       targetPort: 9092
@@ -46,9 +46,9 @@ kind: Service
 metadata:
   name: kafka4
 spec:
+  type: NodePort
   selector:
     app: kafka-broker-4
-  type: NodePort
   ports:
     - port: 9092
       targetPort: 9092
@@ -60,9 +60,9 @@ kind: Service
 metadata:
   name: kafka5
 spec:
+  type: NodePort
   selector:
     app: kafka-broker-5
-  type: NodePort
   ports:
     - port: 9092
       targetPort: 9092

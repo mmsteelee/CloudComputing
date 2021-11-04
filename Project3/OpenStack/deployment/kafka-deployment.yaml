@@ -9,6 +9,9 @@ spec:
     matchLabels:
       app: kafka-broker-1
   template: # Specified info needed to run the pod and what runs in the pod
+    metadata:
+      labels:
+        app: kafka-broker-1
     spec:
       nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
         kubernetes.io/hostname: kubeworker2
@@ -38,6 +41,9 @@ spec:
     matchLabels:
       app: kafka-broker-2
   template:
+    metadata:
+      labels:
+        app: kafka-broker-2
     spec:
       nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
         kubernetes.io/hostname: kubeworker2
@@ -67,6 +73,9 @@ spec:
     matchLabels:
       app: kafka-broker-3
   template:
+    metadata:
+      labels:
+        app: kafka-broker-3
     spec:
       nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
         kubernetes.io/hostname: kubeworker2
@@ -98,6 +107,9 @@ spec:
     matchLabels:
       app: kafka-broker-4
   template:
+    metadata:
+      labels:
+        app: kafka-broker-4
     spec:
       nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
         kubernetes.io/hostname: kubeworker2
@@ -127,6 +139,9 @@ spec:
     matchLabels:
       app: kafka-broker-5
   template:
+    metadata:
+      labels:
+        app: kafka-broker-5
     spec:
       nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
         kubernetes.io/hostname: kubeworker2
