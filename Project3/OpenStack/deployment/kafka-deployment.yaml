@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: kafka-deployment-1
+  name: kafka-deployment
 spec:
   replicas: 1
   selector:
@@ -31,7 +31,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kafka-deployment-2
+  name: kafka-deployment
 spec:
   replicas: 1
   selector:
@@ -60,7 +60,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kafka-deployment-3
+  name: kafka-deployment
 spec:
   replicas: 1
   selector:
@@ -91,7 +91,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kafka-deployment-4
+  name: kafka-deployment
 spec:
   replicas: 1
   selector:
@@ -120,7 +120,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kafka-deployment-5
+  name: kafka-deployment
 spec:
   replicas: 1
   selector:
