@@ -102,6 +102,8 @@ spec:
           value: "yes"
         - name: KAFKA_ADVERTISED_LISTENERS
           value: 129.114.26.148:9092
+        - name: KAFKA_CREATE_TOPICS
+          value: "utilizations:1:1"
 
 ---
 apiVersion: apps/v1
