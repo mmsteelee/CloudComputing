@@ -4,7 +4,6 @@ kind: Deployment
 metadata: 
   name: kafka-deployment-1
 spec:
-  serviceName: kafka1
   replicas: 1
   selector:
     matchLabels:
@@ -34,7 +33,6 @@ kind: Deployment
 metadata:
   name: kafka-deployment-2
 spec:
-  serviceName: kafka2
   replicas: 1
   selector:
     matchLabels:
@@ -64,7 +62,6 @@ kind: Deployment
 metadata:
   name: kafka-deployment-3
 spec:
-  serviceName: kafka3
   replicas: 1
   selector:
     matchLabels:
@@ -96,7 +93,6 @@ kind: Deployment
 metadata:
   name: kafka-deployment-4
 spec:
-  serviceName: kafka4
   replicas: 1
   selector:
     matchLabels:
@@ -126,7 +122,6 @@ kind: Deployment
 metadata:
   name: kafka-deployment-5
 spec:
-  serviceName: kafka5
   replicas: 1
   selector:
     matchLabels:
