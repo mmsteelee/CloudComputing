@@ -2,20 +2,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: kafka-broker0
-spec: 
+  name: kafka-deployment-1
+  namespace: kafka-cluster
+spec:
+  serviceName: kafka1
   replicas: 1
   selector:
     matchLabels:
-      app: kafka1
-      id: "0"
+      app: kafka-broker-1
   template:
-    metadata: 
-      labels:
-        app: kafka1
-        id: "0"
     spec:
-      hostname: kafka-host
+      nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
+        kubernetes.io/hostname: kubeworker2
       containers: 
       - name: kafka
         image: wurstmeister/kafka
@@ -34,21 +32,19 @@ spec:
 ---
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
-  name: kafka-broker0
+metadata:
+  name: kafka-deployment-2
+  namespace: kafka-cluster
 spec:
+  serviceName: kafka2
   replicas: 1
   selector:
     matchLabels:
-      app: kafka2
-      id: "1"
+      app: kafka-broker-2
   template:
-    metadata: 
-      labels:
-        app: kafka2
-        id: "1"
     spec:
-      hostname: kafka-host
+      nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
+        kubernetes.io/hostname: kubeworker2
       containers: 
       - name: kafka
         image: wurstmeister/kafka
@@ -67,21 +63,19 @@ spec:
 ---
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
-  name: kafka-broker0
-spec: 
+metadata:
+  name: kafka-deployment-3
+  namespace: kafka-cluster
+spec:
+  serviceName: kafka3
   replicas: 1
   selector:
     matchLabels:
-      app: kafka3
-      id: "2"
+      app: kafka-broker-3
   template:
-    metadata: 
-      labels:
-        app: kafka3
-        id: "2"
     spec:
-      hostname: kafka-host
+      nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
+        kubernetes.io/hostname: kubeworker2
       containers: 
       - name: kafka
         image: wurstmeister/kafka
@@ -103,20 +97,18 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kafka-broker0
+  name: kafka-deployment-4
+  namespace: kafka-cluster
 spec:
+  serviceName: kafka4
   replicas: 1
   selector:
     matchLabels:
-      app: kafka4
-      id: "3"
+      app: kafka-broker-4
   template:
-    metadata:
-      labels:
-        app: kafka4
-        id: "3"
     spec:
-      hostname: kafka-host
+      nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
+        kubernetes.io/hostname: kubeworker2
       containers:
         - name: kafka
           image: wurstmeister/kafka
@@ -136,20 +128,18 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kafka-broker0
+  name: kafka-deployment-5
+  namespace: kafka-cluster
 spec:
+  serviceName: kafka5
   replicas: 1
   selector:
     matchLabels:
-      app: kafka5
-      id: "4"
+      app: kafka-broker-5
   template:
-    metadata:
-      labels:
-        app: kafka5
-        id: "4"
     spec:
-      hostname: kafka-host
+      nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
+        kubernetes.io/hostname: kubeworker2
       containers:
         - name: kafka
           image: wurstmeister/kafka
