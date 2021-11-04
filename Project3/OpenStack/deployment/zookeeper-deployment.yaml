@@ -17,4 +17,4 @@ spec:
       - name: zoo
         image: digitalwonderland/zookeeper
         ports:
-        - containerPort
+        - containerPort: 2181

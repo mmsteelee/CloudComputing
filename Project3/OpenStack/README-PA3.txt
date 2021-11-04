@@ -91,3 +91,8 @@ run sudo kubeadm reset on vm2 before each new init attempt
 delete .kube dir: sudo rm -r .kube/
 
 localhost connection error usually means we tried a kube command w/o sudo
+
+automated init and join done
+
+copied deployment and service directories (with yml files) into vm2
+cd into service first, kubectl apply -f the services
