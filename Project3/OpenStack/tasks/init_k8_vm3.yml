@@ -3,6 +3,9 @@
   copy: src={{ token_file }} dest=join_token
 
 - name: Joining worker nodes with kubernetes master
-  become: yes
-  shell: "echo --node-name kubeworker2 | cat join_token -"
+  shell: echo --node-name kubeworker2 | cat join_token -
+  register: join_cmd
+
+- name: run join cmd
+  shell: "sudo {{ join_cmd.stdout }}"
 ...
