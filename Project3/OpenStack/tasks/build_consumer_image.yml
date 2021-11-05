@@ -1,0 +1,9 @@
+---
+- name: Copy Job repo
+  copy:
+    src: /vagrant/consumer-job/
+    dest: /
+
+- name: Build docker image
+  shell: "sudo docker build --tag consumer-job-image ."
+...

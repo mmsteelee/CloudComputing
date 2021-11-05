@@ -10,6 +10,8 @@ spec:                     # This is the specification where we can even put the 
       labels:
         app: consumer       # some label to give to this pod (see the matching label above)
     spec:                 # actual specification
+      nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
+        kubernetes.io/hostname: kubeworker2
       containers:
       - name: consumer      # this is going to be used for DNS name
         # given ip address for VM3 to run this image

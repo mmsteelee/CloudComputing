@@ -50,6 +50,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "./local.ini", destination: "/home/vagrant/"
   config.vm.provision "file", source: "./playbook_demo_master.yml", destination: "/home/vagrant/"
   config.vm.provision "file", source: "./tasks", destination: "/home/vagrant/"
+  config.vm.provision "file", source: "./service", destination: "/home/vagrant/"
+  config.vm.provision "file", source: "./deployment", destination: "/home/vagrant/"
+  config.vm.provision "file", source: "./consumer-job", destination: "/home/vagrant/"
   # copy an AWS version
   # config.vm.provision ...
 

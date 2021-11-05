@@ -45,13 +45,29 @@
 #  tasks:
 #    - include_tasks: tasks/init_k8_vm3.yml
 
-- name: "Play 3a: Taint master on VM2"
+- name: "Play 3c: Taint master on VM2"
   hosts: VM2
   remote_user: cc
   collections:
     - openstack.cloud
   tasks:
     - include_tasks: tasks/taint_master.yml
+
+- name: "Play 4a: Build Docker image on VM3"
+  hosts: VM3
+  remote_user: cc
+  collections:
+    - openstack.cloud
+  tasks:
+    - include_tasks: tasks/build_consumer_image.yml
+
+- name: "Play 4b: Deploy Docker Containers"
+  hosts: VM2
+  remote_user: cc
+  collections:
+    - openstack.cloud
+  tasks:
+    - include_tasks: tasks/deploy_docker_containers.yml
 
 #- name: "Play 2b: couchdb"
 #  remote_user: cc

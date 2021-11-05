@@ -1,0 +1,37 @@
+---
+- name: Copy Service repo
+  copy:
+    src: /vagrant/service/
+    dest: /
+- name: Copy Deployment repo
+  copy:
+    src: /vagrant/deployment/
+    dest: /
+- name: Copy Job repo
+  copy:
+    src: /vagrant/consumer-job/
+    dest: /
+
+- name: Zookeeper Service
+  shell: "kubectl apply -f /service/zookeeper-service.yaml"
+- name: Kafka Service
+  shell: "kubectl apply -f /service/kafka-service.yaml"
+- name: Couchdb Service
+  shell: "kubectl apply -f /service/couchdb-service.yaml"
+
+- name: Zookeeper Deployment
+  shell: "kubectl apply -f /deployment/zookeeper-deployment.yaml"
+- name: Pause for 30 seconds to build container
+  pause:
+    seconds: 30
+- name: Kafka Deployment
+  shell: "kubectl apply -f /deployment/zookeeper-deployment.yaml"
+- name: Pause for 30 seconds to build container
+  pause:
+    seconds: 30
+- name: Couchdb Deployment
+  shell: "kubectl apply -f /deployment/zookeeper-deployment.yaml"
+
+- name: Consumer Job
+  shell: "kubectl apply -f /consumer-job/consumer-deployment.yaml"
+...
