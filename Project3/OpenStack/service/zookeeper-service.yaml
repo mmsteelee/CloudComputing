@@ -5,7 +5,6 @@ metadata:
 spec: 
   selector:
     app: zoo
-  type: NodePort
   ports:
     - name: zookeeper-port    # not needed, but I have added this
       protocol: TCP     # this is default (so not needed either)

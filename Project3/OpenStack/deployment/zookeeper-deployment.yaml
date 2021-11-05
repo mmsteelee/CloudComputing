@@ -1,11 +1,12 @@
 ---
-kind: Deployment
 apiVersion: apps/v1
+# @Andy: I just swapped these two lines making apiVersion the first line
+kind: Deployment
 metadata:
   name: zookeeper-deploy
-spec: 
+spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       app: zoo
   template:
@@ -14,7 +15,10 @@ spec:
         app: zoo
     spec:
       containers:
-      - name: zoo
-        image: digitalwonderland/zookeeper
-        ports:
-        - containerPort: 2181
+        # @Andy: Changed the name of the container from zoo to the one below
+        # because I am not sure if there will be a conflict between the "zoo" pod name
+        # and container name
+        - name: zoo-container
+          image: digitalwonderland/zookeeper
+          ports:
+            - containerPort: 2181

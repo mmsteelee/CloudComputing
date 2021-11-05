@@ -7,10 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56cd46e6-9ad2-4fed-b8de-4acfcedae418" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Project3/OpenStack/.ansible.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project3/OpenStack/.ansible.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Project3/OpenStack/tasks/init_k8_vm2.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project3/OpenStack/tasks/init_k8_vm2.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Project3/OpenStack/tasks/init_k8_vm3.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project3/OpenStack/tasks/init_k8_vm3.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Project3/OpenStack/tasks/taint_master.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project3/OpenStack/tasks/taint_master.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playbook_demo_master.yml" beforeDir="false" afterPath="$PROJECT_DIR$/playbook_demo_master.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/CreateVMs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/CreateVMs.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/download_dockerK8.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +47,8 @@
       <option name="presentableId" value="Default" />
       <updated>1635871515651</updated>
       <workItem from="1635871517391" duration="9000" />
+      <workItem from="1636057480335" duration="123000" />
+      <workItem from="1636057677832" duration="28000" />
     </task>
     <servers />
   </component>

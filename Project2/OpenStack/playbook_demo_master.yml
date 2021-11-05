@@ -10,9 +10,9 @@
   tasks:
   - include_tasks: tasks/CreateVMs.yml
 
-#  - name: Pause for 2 minutes to build app cache
-#    pause:
-#      minutes: 2
+  - name: Pause for 2 minutes to build app cache
+    pause:
+      minutes: 2
 
 - name: "Play 2: Firewall Settings and Downloads"
   hosts: MyChameleonVMs
@@ -33,15 +33,6 @@
     - openstack.cloud
   tasks:
     - include_tasks: tasks/CouchDBDownload.yml
-
-#- name: "Play 2c: Docker and Kubernetes"
-#  remote_user: cc
-#  hosts: MyChameleonVMs
-#  become: yes
-#  collections:
-#    - openstack.cloud
-#  tasks:
-#    - include_tasks: tasks/download_dockerK8.yml
 
 - name: "Play 3a: config VM2 servers"
   hosts: VM2

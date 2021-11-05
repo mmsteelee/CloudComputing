@@ -1,7 +1,7 @@
 ---
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: kafka-deployment-1
 spec:
   replicas: 1
@@ -15,20 +15,24 @@ spec:
     spec:
       nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
         kubernetes.io/hostname: kubeworker2
-      containers: 
-      - name: kafka
-        image: wurstmeister/kafka
-        ports:
-        - containerPort: 9092
-        env:
-        - name: KAFKA_ZOOKEEPER_CONNECT
-          value: zookeeper-service:2181
-        - name: KAFKA_BROKER_ID
-          value: "0"
-        - name: ALLOW_PLAINTEXT_LISTINER
-          value: "yes"
-        - name: KAFKA_ADVERTISED_LISTENERS
-          value: 129.114.26.148:9092
+      containers:
+        - name: kafka
+          image: wurstmeister/kafka
+          imagePullPolicy: IfNotPresent  # @Andy added this line
+          ports:
+            - containerPort: 9092
+          env:
+            - name: KAFKA_ZOOKEEPER_CONNECT
+              value: "$(ZOOKEEPER_SERVICE_SERVICE_HOST):2181"
+            - name: KAFKA_BROKER_ID
+              value: "0"
+            - name: ALLOW_PLAINTEXT_LISTENER  # @Andy: There was a typo in LISTENER spelling
+              value: "yes"
+            - name: KAFKA_LISTENERS  #@Andy: This is required to be specified when advertised listeners is specified but I am seeing that the advertised listeners is not working so commenting that out.
+              value: "PLAINTEXT://:9092"
+              #- name: KAFKA_ADVERTISED_LISTENERS
+              #value: 129.114.26.148:9092
+              #value: 192.168.15.3:30000 # @Andy, although I had to change this to my IP address, you had 9092 port but it should be 30000 as it is exposed to outside world
 
 ---
 apiVersion: apps/v1
@@ -40,7 +44,7 @@ spec:
   selector:
     matchLabels:
       app: kafka-broker-2
-  template:
+  template: # Specified info needed to run the pod and what runs in the pod
     metadata:
       labels:
         app: kafka-broker-2
@@ -48,19 +52,23 @@ spec:
       nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
         kubernetes.io/hostname: kubeworker2
       containers:
-      - name: kafka
-        image: wurstmeister/kafka
-        ports:
-        - containerPort: 9092
-        env:
-        - name: KAFKA_ZOOKEEPER_CONNECT
-          value: zookeeper-service:2181
-        - name: KAFKA_BROKER_ID
-          value: "1"
-        - name: ALLOW_PLAINTEXT_LISTINER
-          value: "yes"
-        - name: KAFKA_ADVERTISED_LISTENERS
-          value: 129.114.26.148:9092
+        - name: kafka
+          image: wurstmeister/kafka
+          imagePullPolicy: IfNotPresent  # @Andy added this line
+          ports:
+            - containerPort: 9092
+          env:
+            - name: KAFKA_ZOOKEEPER_CONNECT
+              value: "$(ZOOKEEPER_SERVICE_SERVICE_HOST):2181"
+            - name: KAFKA_BROKER_ID
+              value: "1"
+            - name: ALLOW_PLAINTEXT_LISTENER  # @Andy: There was a typo in LISTENER spelling
+              value: "yes"
+            - name: KAFKA_LISTENERS  #@Andy: This is required to be specified when advertised listeners is specified but I am seeing that the advertised listeners is not working so commenting that out.
+              value: "PLAINTEXT://:9092"
+              #- name: KAFKA_ADVERTISED_LISTENERS
+              #value: 129.114.26.148:9092
+              #value: 192.168.15.3:30000 # @Andy, although I had to change this to my IP address, you had 9092 port but it should be 30000 as it is exposed to outside world
 
 ---
 apiVersion: apps/v1
@@ -72,7 +80,7 @@ spec:
   selector:
     matchLabels:
       app: kafka-broker-3
-  template:
+  template: # Specified info needed to run the pod and what runs in the pod
     metadata:
       labels:
         app: kafka-broker-3
@@ -80,21 +88,25 @@ spec:
       nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
         kubernetes.io/hostname: kubeworker2
       containers:
-      - name: kafka
-        image: wurstmeister/kafka
-        ports:
-        - containerPort: 9092
-        env:
-        - name: KAFKA_ZOOKEEPER_CONNECT
-          value: zookeeper-service:2181
-        - name: KAFKA_BROKER_ID
-          value: "2"
-        - name: ALLOW_PLAINTEXT_LISTINER
-          value: "yes"
-        - name: KAFKA_ADVERTISED_LISTENERS
-          value: 129.114.26.148:9092
-        - name: KAFKA_CREATE_TOPICS
-          value: "utilizations:1:1"
+        - name: kafka
+          image: wurstmeister/kafka
+          imagePullPolicy: IfNotPresent  # @Andy added this line
+          ports:
+            - containerPort: 9092
+          env:
+            - name: KAFKA_ZOOKEEPER_CONNECT
+              value: "$(ZOOKEEPER_SERVICE_SERVICE_HOST):2181"
+            - name: KAFKA_BROKER_ID
+              value: "2"
+            - name: ALLOW_PLAINTEXT_LISTENER  # @Andy: There was a typo in LISTENER spelling
+              value: "yes"
+            - name: KAFKA_LISTENERS  #@Andy: This is required to be specified when advertised listeners is specified but I am seeing that the advertised listeners is not working so commenting that out.
+              value: "PLAINTEXT://:9092"
+              #- name: KAFKA_ADVERTISED_LISTENERS
+              #value: 129.114.26.148:9092
+              #value: 192.168.15.3:30000 # @Andy, although I had to change this to my IP address, you had 9092 port but it should be 30000 as it is exposed to outside world
+            - name: KAFKA_CREATE_TOPICS
+              value: "utilizations:1:1"
 
 ---
 apiVersion: apps/v1
@@ -106,7 +118,7 @@ spec:
   selector:
     matchLabels:
       app: kafka-broker-4
-  template:
+  template: # Specified info needed to run the pod and what runs in the pod
     metadata:
       labels:
         app: kafka-broker-4
@@ -116,17 +128,21 @@ spec:
       containers:
         - name: kafka
           image: wurstmeister/kafka
+          imagePullPolicy: IfNotPresent  # @Andy added this line
           ports:
             - containerPort: 9092
           env:
             - name: KAFKA_ZOOKEEPER_CONNECT
-              value: zookeeper-service:2181
+              value: "$(ZOOKEEPER_SERVICE_SERVICE_HOST):2181"
             - name: KAFKA_BROKER_ID
               value: "3"
-            - name: ALLOW_PLAINTEXT_LISTINER
+            - name: ALLOW_PLAINTEXT_LISTENER  # @Andy: There was a typo in LISTENER spelling
               value: "yes"
-            - name: KAFKA_ADVERTISED_LISTENERS
-              value: 129.114.26.148:9092
+            - name: KAFKA_LISTENERS  #@Andy: This is required to be specified when advertised listeners is specified but I am seeing that the advertised listeners is not working so commenting that out.
+              value: "PLAINTEXT://:9092"
+              #- name: KAFKA_ADVERTISED_LISTENERS
+              #value: 129.114.26.148:9092
+              #value: 192.168.15.3:30000 # @Andy, although I had to change this to my IP address, you had 9092 port but it should be 30000 as it is exposed to outside world
 
 ---
 apiVersion: apps/v1
@@ -138,7 +154,7 @@ spec:
   selector:
     matchLabels:
       app: kafka-broker-5
-  template:
+  template: # Specified info needed to run the pod and what runs in the pod
     metadata:
       labels:
         app: kafka-broker-5
@@ -148,15 +164,19 @@ spec:
       containers:
         - name: kafka
           image: wurstmeister/kafka
+          imagePullPolicy: IfNotPresent  # @Andy added this line
           ports:
             - containerPort: 9092
           env:
             - name: KAFKA_ZOOKEEPER_CONNECT
-              value: zookeeper-service:2181
+              value: "$(ZOOKEEPER_SERVICE_SERVICE_HOST):2181"
             - name: KAFKA_BROKER_ID
               value: "4"
-            - name: ALLOW_PLAINTEXT_LISTINER
+            - name: ALLOW_PLAINTEXT_LISTENER  # @Andy: There was a typo in LISTENER spelling
               value: "yes"
-            - name: KAFKA_ADVERTISED_LISTENERS
-              value: 129.114.26.148:9092
+            - name: KAFKA_LISTENERS  #@Andy: This is required to be specified when advertised listeners is specified but I am seeing that the advertised listeners is not working so commenting that out.
+              value: "PLAINTEXT://:9092"
+              #- name: KAFKA_ADVERTISED_LISTENERS
+              #value: 129.114.26.148:9092
+              #value: 192.168.15.3:30000 # @Andy, although I had to change this to my IP address, you had 9092 port but it should be 30000 as it is exposed to outside world
 ...
