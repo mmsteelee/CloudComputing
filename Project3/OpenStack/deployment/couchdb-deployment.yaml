@@ -15,6 +15,8 @@ spec:
       labels:
         app: couch-server-app
     spec:
+      nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
+        kubernetes.io/hostname: kubeworker2
       containers: 
       - name: couchdb
         image: couchdb:latest
