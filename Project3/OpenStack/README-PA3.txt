@@ -110,5 +110,10 @@ we were very unfamiliar with writing yaml files, so the process took a lot of ti
 syntactic errors, port misalignments, etc. for deploying 5 kafka pods that could connect to the zookeeper and couchdb pods
 
 we are still getting an image pull error when trying to run the consumer job deployment,
-that code will also be submitted for review/advice here. We think it's a matter of
+that code will also be submitted for review/advice here, and follow up on monday
+
+Teamwork:
+Matt: writing playbooks for automated k8 initialization, worker join, and master tainting
+Austin: troubleshooting the playbooks on the vagrant vm provision. troubleshooting manual pod deployments on VMs
+Brett:
 
