@@ -84,7 +84,7 @@ there are issues getting service-job to work, involving pushing to the private r
 
 
 Milestone 2:
-automation of k8 initialization
+automation of k8 initialization, worker node join, and master tainting
 
 when troubleshooting k8 vm2 init:
 run sudo kubeadm reset on vm2 before each new init attempt
@@ -92,7 +92,23 @@ delete .kube dir: sudo rm -r .kube/
 
 localhost connection error usually means we tried a kube command w/o sudo
 
+Effort expended:
+getting the k8 initialization automated was not so bad, but trying to get VM3 to join as a worker took a lot of time.
+we couldn't write the init command and the vm3 join in the same task playbook, as it didn't let us switch hosts mid-task,
+so we had to find a way to store the join token, concatenate --node-name kubeworker2 at the end, and run that concatenated command.
+in the end, we used an external file to store the join token, then echo --node-name edit to a cat call on the variable file, store that as a
+local variable, then call it in a shell
+
 automated init and join done
 
 copied deployment and service directories (with yml files) into vm2
-cd into service first, kubectl apply -f the services
+cd into service first, kubectl apply -f the services (zookeeper, then kafka, then couchdb),
+then kubectl apply -f the deployments (kafka, couchdb), then kubectl apply -f the consumer
+
+effort expended:
+we were very unfamiliar with writing yaml files, so the process took a lot of time with the professor for help troubleshooting
+syntactic errors, port misalignments, etc. for deploying 5 kafka pods that could connect to the zookeeper and couchdb pods
+
+we are still getting an image pull error when trying to run the consumer job deployment,
+that code will also be submitted for review/advice here. We think it's a matter of
+

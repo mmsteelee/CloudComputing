@@ -25,25 +25,25 @@
 #    - include_tasks: tasks/download_kafka.yml
 #    - include_tasks: tasks/download_dockerK8.yml
 
-#- name: "Play 3a: Init Cluster on VM2"
-#  hosts: VM2
-#  remote_user: cc
-#  vars_files:
-#    - variables
-#  collections:
-#    - openstack.cloud
-#  tasks:
-#    - include_tasks: tasks/init_k8_vm2.yml
+- name: "Play 3a: Init Cluster on VM2"
+  hosts: VM2
+  remote_user: cc
+  vars_files:
+    - variables
+  collections:
+    - openstack.cloud
+  tasks:
+    - include_tasks: tasks/init_k8_vm2.yml
 
-#- name: "Play 3b: Join Cluster on VM3"
-#  hosts: VM3
-#  remote_user: cc
-#  vars_files:
-#    - variables
-#  collections:
-#    - openstack.cloud
-#  tasks:
-#    - include_tasks: tasks/init_k8_vm3.yml
+- name: "Play 3b: Join Cluster on VM3"
+  hosts: VM3
+  remote_user: cc
+  vars_files:
+    - variables
+  collections:
+    - openstack.cloud
+  tasks:
+    - include_tasks: tasks/init_k8_vm3.yml
 
 - name: "Play 3c: Taint master on VM2"
   hosts: VM2
@@ -68,35 +68,5 @@
     - openstack.cloud
   tasks:
     - include_tasks: tasks/deploy_docker_containers.yml
-
-#- name: "Play 2b: couchdb"
-#  remote_user: cc
-#  hosts: VM3
-#  become: yes
-#  collections:
-#    - openstack.cloud
-#  tasks:
-#    - include_tasks: tasks/CouchDBDownload.yml
-
-#- name: "Play 3a: config VM2 servers"
-#  hosts: VM2
-#  remote_user: cc
-#  gather_facts: yes
-#  become: yes
-#  tasks:
-#    - include_tasks: tasks/edit_server_file_vm2.yml
-#    - include_tasks: tasks/run_kafka_server_vm2.yml
-#    - include_tasks: tasks/create_kafka_topics.yml
-
-#- name: "Play 3b: config vm3 servers"
-#  hosts: VM3
-#  remote_user: cc
-#  gather_facts: yes
-#  become: yes
-#  tasks:
-#    - include_tasks: tasks/edit_server_file_vm3.yml
-#    - include_tasks: tasks/run_kafka_server_vm3.yml
-#    - include_tasks: tasks/copy_consumer.yml
-#    - include_tasks: tasks/start_consumer.yml
 ...
 
