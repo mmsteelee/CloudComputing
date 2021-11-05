@@ -14,7 +14,7 @@ spec:
         app: kafka-broker-1
     spec:
       nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
-        kubernetes.io/hostname: kubeworker2
+        kubernetes.io/hostname: kubemaster
       containers:
         - name: kafka
           image: wurstmeister/kafka
@@ -50,7 +50,7 @@ spec:
         app: kafka-broker-2
     spec:
       nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
-        kubernetes.io/hostname: kubeworker2
+        kubernetes.io/hostname: kubemaster
       containers:
         - name: kafka
           image: wurstmeister/kafka
@@ -86,7 +86,7 @@ spec:
         app: kafka-broker-3
     spec:
       nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
-        kubernetes.io/hostname: kubeworker2
+        kubernetes.io/hostname: kubemaster
       containers:
         - name: kafka
           image: wurstmeister/kafka

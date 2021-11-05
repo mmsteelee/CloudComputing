@@ -12,10 +12,9 @@ spec:                     # This is the specification where we can even put the 
     spec:                 # actual specification
       containers:
       - name: consumer      # this is going to be used for DNS name
-        image: consumer-deployment-image   # this is the image name I gave when I built from the dockerfile
+        # given ip address for VM3 to run this image
+        image: 129.114.27.112:5000/consumer-deployment-image   # we want to pull the image we made from our dockerfile
         imagePullPolicy: Always  # This forces the node to find the image locally
         command: ["python3"]
-        args: ["consumer.py"]  # arguments to run. I am running this for 1000
-                                                                                                       # iterations so that we have time to do an exec
-                                                                                                       # and open a shell to the running pod
+        args: ["consumer.py"]  # arguments to run
       restartPolicy: Never  # we ask Kubernetes not to restart
