@@ -23,7 +23,7 @@
   shell: "kubectl apply -f deployment/zookeeper-deployment.yaml"
 - name: Pause for 30 seconds to build container
   pause:
-    seconds: 30
+    seconds: 10
 - name: Kafka Deployment
   shell: "kubectl apply -f deployment/zookeeper-deployment.yaml"
 - name: Pause for 30 seconds to build container
