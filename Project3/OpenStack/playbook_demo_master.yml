@@ -55,15 +55,6 @@
 #    - include_tasks: tasks/taint_master.yml
 
 # code for milestone 3
-- name: "Play 4: Copy files"
-  hosts: MyChameleonVMs
-  remote_user: cc
-  become: yes
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/copy_repos.yml
-
 - name: "Play 4a: Build Docker image on VM3"
   hosts: VM3
   remote_user: cc

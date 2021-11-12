@@ -1,15 +1,17 @@
 ---
-- name: Copy Job repo VM3
-  shell: "scp -r /vagrant/consumer-job/ cc@129.114.27.112:"
-- name: Copy Service repo VM3
-  shell: "scp -r /vagrant/service/ cc@129.114.27.112:"
-- name: Copy Deployment repo VM3
-  shell: "scp -r /vagrant/deployment/ cc@129.114.27.112:"
-
-- name: Copy Job repo VM2
-  shell: "scp -r /vagrant/consumer-job/ cc@129.114.26.148:"
-- name: Copy Service repo VM2
-  shell: "scp -r /vagrant/service/ cc@129.114.26.148:"
-- name: Copy Deployment repo VM2
-  shell: "scp -r /vagrant/deployment/ cc@129.114.26.148:"
+- name: Copy Job repo
+  ansible.builtin.copy:
+    src: /vagrant/consumer-job/
+    dest: /cc/home/
+    remote_src: yes
+- name: Copy Service repo
+  ansible.builtin.copy:
+    src: /vagrant/service/
+    dest: /cc/home/
+    remote_src: yes
+- name: Copy Deployment repo
+  ansible.builtin.copy:
+    src: /vagrant/deployment/
+    dest: /cc/home/
+    remote_src: yes
 ...
