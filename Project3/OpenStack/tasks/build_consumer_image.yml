@@ -1,6 +1,8 @@
 ---
 - name: Build docker image
-  shell: "sudo docker build --tag consumer-job-image ."
+  shell: 
+    cmd: "sudo docker build --tag consumer-job-image ."
+    chdir: consumer-job/
 
 - name: Create Docker Registry
   shell: "sudo docker run -d -p 5000:5000 --restart=always --name registry registry:2"
