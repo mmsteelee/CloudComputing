@@ -1,0 +1,17 @@
+---
+- name: Copy Job repo
+  ansible.builtin.copy:
+    src: /vagrant/consumer-job/
+    dest: /cc/home/
+    remote_src: yes
+- name: Copy Service repo
+  ansible.builtin.copy:
+    src: /vagrant/service/
+    dest: /cc/home/
+    remote_src: yes
+- name: Copy Deployment repo
+  ansible.builtin.copy:
+    src: /vagrant/deployment/
+    dest: /cc/home/
+    remote_src: yes
+...
