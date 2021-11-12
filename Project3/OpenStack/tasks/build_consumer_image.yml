@@ -1,8 +1,9 @@
 ---
 - name: Copy Job repo
-  copy:
+  ansible.builtin.copy:
     src: /vagrant/consumer-job/
     dest: /
+    remote_src: yes
 
 - name: Build docker image
   shell: "sudo docker build --tag consumer-job-image ."
