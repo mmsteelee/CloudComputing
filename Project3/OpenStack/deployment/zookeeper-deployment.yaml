@@ -14,6 +14,8 @@ spec:
       labels:
         app: zoo
     spec:
+      nodeSelector: # this shows how you force k8s to schedule the pod on a specified node
+        kubernetes.io/hostname: kubemaster
       containers:
         # @Andy: Changed the name of the container from zoo to the one below
         # because I am not sure if there will be a conflict between the "zoo" pod name

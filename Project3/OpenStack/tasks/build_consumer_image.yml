@@ -5,6 +5,9 @@
     dest: /
     remote_src: yes
 
+- name: Go to the folder and execute command
+  command: chdir=/consumer-job/ ls
+
 - name: Build docker image
   shell: "sudo docker build --tag consumer-job-image ."
 

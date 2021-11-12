@@ -1,10 +1,10 @@
 ---
 # needed on initial vm boot
-#- name: Add Entry to Hosts File (MASTER)
-#  replace:
-#    path: /etc/hosts
-#    regexp: '127.0.0.1 localhost'
-#    replace: '127.0.0.1 localhost\n{{ play_hosts[0] }} kubemaster kubeworker1'
+- name: Add Entry to Hosts File (MASTER)
+  replace:
+    path: /etc/hosts
+    regexp: '127.0.0.1 localhost'
+    replace: '127.0.0.1 localhost\n{{ play_hosts[0] }} kubemaster kubeworker1'
 
 - name: init
   shell: "sudo kubeadm init --node-name kubemaster --pod-network-cidr=10.244.0.0/16"
