@@ -11,7 +11,7 @@ consumer.subscribe (topics=["utilizations"])
 
 # acquire couchdb server
 user = "admin"
-password = "admin"
+password = "cloud"
 conn_string  = "http://{}:{}@{}:30006".format(user, password, ip_couchdb)
 print(conn_string)
 couch = couchdb.Server(conn_string)
