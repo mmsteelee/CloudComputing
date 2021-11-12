@@ -1,17 +1,4 @@
 ---
-- name: Copy Service repo
-  copy:
-    src: /vagrant/service/
-    dest: /
-- name: Copy Deployment repo
-  copy:
-    src: /vagrant/deployment/
-    dest: /
-- name: Copy Job repo
-  copy:
-    src: /vagrant/consumer-job/
-    dest: /
-
 - name: Zookeeper Service
   shell: "kubectl apply -f service/zookeeper-service.yaml"
 - name: Kafka Service
