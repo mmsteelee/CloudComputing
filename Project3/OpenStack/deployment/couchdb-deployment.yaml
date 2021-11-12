@@ -19,12 +19,13 @@ spec:
         kubernetes.io/hostname: kubeworker2
       containers: 
       - name: couchdb
-        image: couchdb:latest
+        image: bitnami/couchdb:latest
+        imagePullPolicy: Always  
         env:
         - name: COUCHDB_USER
-          value: admin
+          value: "admin"
         - name: COUCHDB_PASSWORD
-          value: admin
+          value: "cloud"
         ports:
         - containerPort: 5984
 
