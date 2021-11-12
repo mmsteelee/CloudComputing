@@ -14,13 +14,13 @@
 #    pause:
 #      minutes: 2
 
-- name: "Play 2: Firewall Settings and Downloads"
-  hosts: MyChameleonVMs
-  remote_user: cc
-  become: yes
-  collections:
-    - openstack.cloud
-  tasks:
+#- name: "Play 2: Firewall Settings and Downloads"
+#  hosts: MyChameleonVMs
+#  remote_user: cc
+#  become: yes
+#  collections:
+#    - openstack.cloud
+#  tasks:
 #    - include_tasks: tasks/SetUFWrules.yml
 #    - include_tasks: tasks/download_kafka.yml
 #    - include_tasks: tasks/download_dockerK8.yml
@@ -47,26 +47,27 @@
 #  tasks:
 #    - include_tasks: tasks/init_k8_vm3.yml
 
-- name: "Play 3c: Taint master on VM2"
-  hosts: VM2
-  remote_user: cc
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/taint_master.yml
+#- name: "Play 3c: Taint master on VM2"
+#  hosts: VM2
+#  remote_user: cc
+#  collections:
+#    - openstack.cloud
+#  tasks:
+#    - include_tasks: tasks/taint_master.yml
 
 # code for milestone 3
-- name: "Play 4a: Build Docker image on VM3"
-  hosts: VM3
-  remote_user: cc
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/build_consumer_image.yml
+#- name: "Play 4a: Build Docker image on VM3"
+#  hosts: VM3
+#  remote_user: cc
+#  collections:
+#    - openstack.cloud
+#  tasks:
+#    - include_tasks: tasks/build_consumer_image.yml
 
 - name: "Play 4b: Deploy Docker Containers"
   hosts: VM2
   remote_user: cc
+  become: yes
   collections:
     - openstack.cloud
   tasks:
