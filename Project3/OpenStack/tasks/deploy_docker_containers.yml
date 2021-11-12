@@ -1,16 +1,19 @@
 ---
 - name: Copy Service repo
-  copy:
+  ansible.builtin.copy:
     src: /vagrant/service/
     dest: /
+    remote_src: yes
 - name: Copy Deployment repo
-  copy:
+  ansible.builtin.copy:
     src: /vagrant/deployment/
     dest: /
+    remote_src: yes
 - name: Copy Job repo
-  copy:
+  ansible.builtin.copy:
     src: /vagrant/consumer-job/
     dest: /
+    remote_src: yes
 
 - name: Zookeeper Service
   shell: "kubectl apply -f service/zookeeper-service.yaml"
