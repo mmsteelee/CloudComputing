@@ -1,7 +1,7 @@
 ---
 - name: Build docker image
-  shell: 
-    cmd: "sudo docker build --tag consumer-job-image ."
+  shell: "sudo docker build --tag consumer-job-image ."
+  args: 
     chdir: consumer-job/
 
 - name: Create Docker Registry
