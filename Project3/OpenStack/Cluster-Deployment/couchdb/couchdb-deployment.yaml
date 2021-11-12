@@ -22,5 +22,5 @@ spec:                     # This is the specification where we can even put the 
       - name: couchdb       # Used by DNS
         image: couchdb   # this is the image name on hub.docker or if you have one locally. We use an older
                           # and then show how we can upgrade to newer version
-        ports:            # Since nginx is a web server, we let it listen on port 80 in the container
+        ports:            # Since couchdb is a web server, we let it listen on port 80 in the container
         - containerPort: 80
