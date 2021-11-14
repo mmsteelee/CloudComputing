@@ -1,10 +1,11 @@
 ---
 # needed on first vm boot
-- name: Alias Host File (Worker)
-  replace:
-    path: /etc/hosts
-    regexp: '127.0.0.1 localhost'
-    replace: '127.0.0.1 localhost\n{{ play_hosts[0] }} kubeworker2'
+# - name: Alias Host File (Worker)
+#   become: yes
+#   replace:
+#     path: /etc/hosts
+#     regexp: '127.0.0.1 localhost'
+#     replace: '127.0.0.1 localhost\n{{ play_hosts[0] }} kubeworker2'
 
 - name: Copying token to worker nodes
   copy: src={{ token_file }} dest=join_token

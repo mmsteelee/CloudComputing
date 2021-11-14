@@ -16,7 +16,7 @@ spec:                     # This is the specification where we can even put the 
       - name: consumer      # this is going to be used for DNS name
         # given ip address for VM3 to run this image
         image: localhost:5000/consumer-job-image   # we want to pull the image we made from our dockerfile
-        imagePullPolicy: Always  # This forces the node to find the image locally
+        # imagePullPolicy: Always  # This forces the node to find the image locally
         command: ["python3"]
         args: ["consumer.py"]  # arguments to run
       restartPolicy: Never  # we ask Kubernetes not to restart
