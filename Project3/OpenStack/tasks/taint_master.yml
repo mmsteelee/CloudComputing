@@ -1,7 +1,4 @@
 ---
-- name: Get master info
-  shell: "kubectl get nodes -o json | jq '.items[].spec.taints'"
-
 - name: taint master
   shell: "kubectl taint nodes kubemaster node-role.kubernetes.io/master:NoSchedule-"
 ...
