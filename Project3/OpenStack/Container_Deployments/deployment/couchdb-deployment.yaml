@@ -21,11 +21,11 @@ spec:
       - name: couchdb
         image: bitnami/couchdb:latest
         imagePullPolicy: IfNotPresent  
-        # env:
-        # - name: COUCHDB_USER
-        #   value: "admin"
-        # - name: COUCHDB_PASSWORD
-        #   value: "cloud"
+        env:
+        - name: COUCHDB_USER
+          value: "admin"
+        - name: COUCHDB_PASSWORD
+          value: "cloud"
         ports:
         - containerPort: 5984
 ...

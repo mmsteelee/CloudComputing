@@ -1,1 +1,1 @@
-kubeadm join 10.212.96.12:6443 --token ikp681.v8r4sppou7e0vzdc --discovery-token-ca-cert-hash sha256:c408cb2e6387e2e103688af9f01925f046db8417063dcc740fb2b74fb22355c9 
+kubeadm join 10.212.96.12:6443 --token crm8du.x0gthx96x2to66nd --discovery-token-ca-cert-hash sha256:0dae4f8c36db46bdcfb429b635a6695e2600fc81dfa47beb23dfc15b5119244f 
