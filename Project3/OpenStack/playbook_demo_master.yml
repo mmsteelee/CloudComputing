@@ -2,55 +2,55 @@
 #####################################################
 ### Play 1: Create VMs
 #####################################################
-- name: "Play 1: Create VMs"
-  hosts: MyLocalVMs
-  remote_user: vagrant
-  collections:
-    - openstack.cloud
-  tasks:
-  - include_tasks: tasks/CreateVMs.yml
+# - name: "Play 1: Create VMs"
+#   hosts: MyLocalVMs
+#   remote_user: vagrant
+#   collections:
+#     - openstack.cloud
+#   tasks:
+#   - include_tasks: tasks/CreateVMs.yml
 
-  - name: Pause for 2 minutes to build app cache
-    pause:
-      minutes: 2
+#   - name: Pause for 2 minutes to build app cache
+#     pause:
+#       minutes: 2
 
-- name: "Play 2: Firewall Settings and Downloads"
-  hosts: MyChameleonVMs
-  remote_user: cc
-  become: yes
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/SetUFWrules.yml
-    - include_tasks: tasks/download_dockerK8.yml
+# - name: "Play 2: Firewall Settings and Downloads"
+#   hosts: MyChameleonVMs
+#   remote_user: cc
+#   become: yes
+#   collections:
+#     - openstack.cloud
+#   tasks:
+#     - include_tasks: tasks/SetUFWrules.yml
+#     - include_tasks: tasks/download_dockerK8.yml
 
-- name: "Play 3a: Init Cluster on VM2"
-  hosts: VM2
-  remote_user: cc
-  vars_files:
-    - variables
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/init_k8_vm2.yml
+# - name: "Play 3a: Init Cluster on VM2"
+#   hosts: VM2
+#   remote_user: cc
+#   vars_files:
+#     - variables
+#   collections:
+#     - openstack.cloud
+#   tasks:
+#     - include_tasks: tasks/init_k8_vm2.yml
 
-- name: "Play 3b: Join Cluster on VM3"
-  hosts: VM3
-  remote_user: cc
-  vars_files:
-    - variables
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/init_k8_vm3.yml
+# - name: "Play 3b: Join Cluster on VM3"
+#   hosts: VM3
+#   remote_user: cc
+#   vars_files:
+#     - variables
+#   collections:
+#     - openstack.cloud
+#   tasks:
+#     - include_tasks: tasks/init_k8_vm3.yml
 
-- name: "Play 3c: Taint master on VM2"
-  hosts: VM2
-  remote_user: cc
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/taint_master.yml
+# - name: "Play 3c: Taint master on VM2"
+#   hosts: VM2
+#   remote_user: cc
+#   collections:
+#     - openstack.cloud
+#   tasks:
+#     - include_tasks: tasks/taint_master.yml
 
 # code for milestone 3
 # - name: "Play 4a: Build Docker image on VM3"
