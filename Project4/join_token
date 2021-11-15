@@ -1,0 +1,1 @@
+kubeadm join 10.212.96.12:6443 --token er4h5b.htc05suck7obg6ht --discovery-token-ca-cert-hash sha256:7567405343a9171827062666c510ea2413a7e4328450db517cb2a20f1990aacd 

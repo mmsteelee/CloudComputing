@@ -1,0 +1,31 @@
+---
+# needed on initial vm boot
+# - name: Add Entry to Hosts File (MASTER)
+#   become: yes
+#   replace:
+#     path: /etc/hosts
+#     regexp: '127.0.0.1 localhost'
+#     replace: '127.0.0.1 localhost\n{{ play_hosts[0] }} kubemaster kubeworker1'
+
+- name: init
+  shell: "sudo kubeadm init --node-name kubemaster --pod-network-cidr=10.244.0.0/16"
+
+- name: mkdir
+  shell: "mkdir -p $HOME/.kube"
+
+- name: config
+  shell: "sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
+
+- name: ownership
+  shell: "sudo chown $(id -u):$(id -g) $HOME/.kube/config"
+
+- name: Flannel
+  shell: "kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
+
+- name: get join token
+  shell: "kubeadm token create --print-join-command"
+  register: output
+
+- name: Storing Logs and Generated token for future purpose.
+  local_action: copy content={{ output.stdout }} dest={{ token_file }}
+...

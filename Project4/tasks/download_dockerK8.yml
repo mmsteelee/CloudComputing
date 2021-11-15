@@ -1,0 +1,50 @@
+---
+- name: Install Docker
+  apt:
+    name: docker.io
+    state: latest
+    update_cache: yes
+
+- name: Docker mod (from slides)
+  replace:
+    path: /lib/systemd/system/docker.service
+    regexp: 'ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock'
+    replace: 'ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd'
+
+- name: Restart service docker and daemon-reload
+  ansible.builtin.systemd:
+    state: restarted
+    daemon_reload: yes
+    name: docker
+
+# kubernetes install
+- name: update
+  shell: "sudo apt-get update"
+
+- name: curl apt-get cert
+  shell: "sudo apt-get install -y apt-transport-https ca-certificates curl"
+
+- name: curl cloud key
+  shell: "sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+
+- name: add k8 repo
+  shell: "echo deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main | sudo tee /etc/apt/sources.list.d/kubernetes.list"
+
+- name: update again
+  shell: "sudo apt-get update"
+
+- name: Installing Kubernetes Cluster Packages.
+  shell: "sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni"
+
+- name: Disable K8 swap
+  command: swapoff -a
+
+- name: Docker Modification
+  shell: "systemctl daemon-reload"
+
+- name: Docker Modification
+  shell: "systemctl restart docker"
+
+- name: Check Docker Status
+  shell: "systemctl status docker"
+...
