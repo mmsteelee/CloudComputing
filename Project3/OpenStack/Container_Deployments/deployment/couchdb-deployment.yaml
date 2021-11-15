@@ -28,4 +28,4 @@ spec:
           value: "cloud"
         ports:
         - containerPort: 5984
-
+...

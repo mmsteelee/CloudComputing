@@ -24,3 +24,4 @@ spec:
           image: digitalwonderland/zookeeper
           ports:
             - containerPort: 2181
+...
