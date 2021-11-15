@@ -1,4 +1,0 @@
----
-- name: Start up Consumer.py on VM3
-  shell: "python consumer.py"
-...

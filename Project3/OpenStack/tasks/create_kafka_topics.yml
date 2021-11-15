@@ -1,6 +1,0 @@
----
-- name: Create kafka topic Create utilizations topic
-  shell: "bin/kafka-topics.sh --create --topic utilizations --bootstrap-server localhost:9092"
-  async: 15
-  poll: 0
-...

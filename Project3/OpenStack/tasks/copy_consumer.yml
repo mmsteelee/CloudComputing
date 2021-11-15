@@ -1,6 +1,0 @@
----
-- name: Copy consumer.py to VM3
-  copy:
-    src: ./consumer.py
-    dest: /home/cc
-...

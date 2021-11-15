@@ -1,6 +1,0 @@
----
-- name: Start kafka on VM3
-  shell: 'bin/kafka-server-start.sh config/server.properties'
-  async: 3600 #Run for 1hour
-  poll: 0
-...
