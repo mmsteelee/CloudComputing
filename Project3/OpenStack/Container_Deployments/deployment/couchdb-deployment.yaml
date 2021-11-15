@@ -30,4 +30,4 @@ spec:
           value: 30006
         ports:
         - containerPort: 5984
-
+...
