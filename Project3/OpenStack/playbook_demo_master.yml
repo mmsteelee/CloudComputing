@@ -54,21 +54,22 @@
 
 - name: "Play 4: Copy files to VMs"
   hosts: MyChameleonVMs
+  remote_user: cc
+  become: yes
   collections:
     - openstack.cloud
-  become: yes
   tasks:
     - include_tasks: tasks/copy_repos.yml
 
 # code for milestone 3
-# - name: "Play 4a: Build Docker image on VM3"
-#   hosts: VM3
-#   remote_user: cc
-#   become: yes
-#   collections:
-#     - openstack.cloud
-#   tasks:
-#     - include_tasks: tasks/build_consumer_image.yml
+- name: "Play 4a: Build Docker image on VM3"
+  hosts: VM3
+  remote_user: cc
+  become: yes
+  collections:
+    - openstack.cloud
+  tasks:
+    - include_tasks: tasks/build_consumer_image.yml
 
 - name: "Play 4b: Deploy Docker Containers"
   hosts: VM2
