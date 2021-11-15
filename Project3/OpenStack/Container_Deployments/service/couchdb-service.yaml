@@ -12,3 +12,21 @@ spec:
       port: 5984   # the port used by the server inside the pod/container
       targetPort: 5984  # not sure if we need this because if not specified, it is same as port
       nodePort: 30006  # this is what will be externally published
+
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: couch-service
+spec:
+  containers:
+  - name: couch-service
+    image: bitnami/couchdb:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+      - containerPort: 5984
+        hostPort: 30006
+
+...
