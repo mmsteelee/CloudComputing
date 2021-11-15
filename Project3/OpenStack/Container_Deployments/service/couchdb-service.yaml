@@ -25,6 +25,11 @@ spec:
   - name: couch-service
     image: bitnami/couchdb:latest
     imagePullPolicy: IfNotPresent
+    env:
+    - name: COUCHDB_USER
+      value: "admin"
+    - name: COUCHDB_PASSWORD
+      value: "cloud"
     ports:
       - containerPort: 5984
         hostPort: 30006
