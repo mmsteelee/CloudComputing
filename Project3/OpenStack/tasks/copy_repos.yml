@@ -1,55 +1,11 @@
 ---
-- name: mkdir conusmer job
-  shell: "mkdir -p $HOME/consumer-job"
-
-- name: Copy Job repo - deployment
+- name: Copy service and deployment repos
   copy:
-    src: /vagrant/consumer-job/consumer-deployment.yaml
-    dest: /cc/home/consumer-job/
+    src: /vagrant/Container_Deployments
+    dest: /cc/home/
 
-- name: Copy Job repo - .py
+- name: Copy consumer-job repo
   copy:
-    src: /vagrant/consumer-job/consumer.py
-    dest: /cc/home/consumer-job/
-
-- name: Copy Job repo - dockerfile
-  copy:
-    src: /vagrant/consumer-job/dockerfile
-    dest: /cc/home/consumer-job/
-
-- name: mkdir service
-  shell: "mkdir -p $HOME/service"
-
-- name: Copy Service repo - cdb
-  copy:
-    src: /vagrant/service/couchdb-service.yaml
-    dest: /cc/home/service/
-
-- name: Copy Service repo - kafka
-  copy:
-    src: /vagrant/service/kafka-service.yaml
-    dest: /cc/home/service/
-
-- name: Copy Service repo - zoo
-  copy:
-    src: /vagrant/service/zookeeper-service.yaml
-    dest: /cc/home/service/
-
-- name: mkdir
-  shell: "mkdir -p $HOME/deployment"
-
-- name: Copy Deployment repo - cdb
-  copy:
-    src: /vagrant/deployment/couchdb-deployment.yaml
-    dest: /cc/home/deployment/
-
-- name: Copy Deployment repo - kafka
-  copy:
-    src: /vagrant/deployment/kafka-deployment.yaml
-    dest: /cc/home/deployment/
-
-- name: Copy Deployment repo - zoo
-  copy:
-    src: /vagrant/deployment/zookeeper-deployment.yaml
-    dest: /cc/home/deployment/
+    src: /vagrant/consumer-job
+    dest: /cc/home/
 ...

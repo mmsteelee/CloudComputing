@@ -26,8 +26,6 @@ spec:
           value: "admin"
         - name: COUCHDB_PASSWORD
           value: "cloud"
-        - name: COUCHDB_PORT_NUMBER
-          value: 30006
         ports:
         - containerPort: 5984
 
