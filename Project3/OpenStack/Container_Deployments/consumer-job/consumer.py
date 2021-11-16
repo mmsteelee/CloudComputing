@@ -22,7 +22,7 @@ else:
 
 # we keep reading and printing
 for msg in consumer:
-    # print(msg.value)
+    print(msg.value)
     # document = json.load(msg.value)
     document = {'test': str(msg.value, 'ascii')}
     # db.save(msg.value)

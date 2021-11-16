@@ -4,12 +4,12 @@ from json import dumps
 from kafka import KafkaProducer  # producer of events
 
 # acquire the producer
-producer = KafkaProducer (bootstrap_servers="129.114.26.148:9092",
+producer = KafkaProducer (bootstrap_servers="129.114.26.148:30002",
                                           value_serializer=lambda x:
                                           dumps(x).encode('utf-8'))
 
 # open csv file into a reader
-with open('Count_Statistics_2019.csv') as csv_file:
+with open('Count_Statistics_2019.csv', 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
 
 # process csv line by line

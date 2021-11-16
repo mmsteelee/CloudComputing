@@ -3,8 +3,6 @@
   shell: "kubectl apply -f Container_Deployments/service/zookeeper-service.yaml"
 - name: Kafka Service
   shell: "kubectl apply -f Container_Deployments/service/kafka-service.yaml"
-- name: Couchdb Service
-  shell: "kubectl apply -f Container_Deployments/service/couchdb-service.yaml"
 
 - name: Zookeeper Deployment
   shell: "kubectl apply -f Container_Deployments/deployment/zookeeper-deployment.yaml"
