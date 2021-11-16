@@ -30,6 +30,8 @@ spec:
               value: "yes"
             - name: KAFKA_LISTENERS  #@Andy: This is required to be specified when advertised listeners is specified but I am seeing that the advertised listeners is not working so commenting that out.
               value: "PLAINTEXT://:9092"
+            - name: KAFKA_CREATE_TOPICS
+              value: "utilizations:1:1"
               #- name: KAFKA_ADVERTISED_LISTENERS
               #value: 129.114.26.148:9092
               #value: 192.168.15.3:30000 # @Andy, although I had to change this to my IP address, you had 9092 port but it should be 30000 as it is exposed to outside world
@@ -66,6 +68,8 @@ spec:
               value: "yes"
             - name: KAFKA_LISTENERS  #@Andy: This is required to be specified when advertised listeners is specified but I am seeing that the advertised listeners is not working so commenting that out.
               value: "PLAINTEXT://:9092"
+            - name: KAFKA_CREATE_TOPICS
+              value: "utilizations:1:1"
               #- name: KAFKA_ADVERTISED_LISTENERS
               #value: 129.114.26.148:9092
               #value: 192.168.15.3:30000 # @Andy, although I had to change this to my IP address, you had 9092 port but it should be 30000 as it is exposed to outside world
@@ -140,6 +144,8 @@ spec:
               value: "yes"
             - name: KAFKA_LISTENERS  #@Andy: This is required to be specified when advertised listeners is specified but I am seeing that the advertised listeners is not working so commenting that out.
               value: "PLAINTEXT://:9092"
+            - name: KAFKA_CREATE_TOPICS
+              value: "utilizations:1:1"
               #- name: KAFKA_ADVERTISED_LISTENERS
               #value: 129.114.26.148:9092
               #value: 192.168.15.3:30000 # @Andy, although I had to change this to my IP address, you had 9092 port but it should be 30000 as it is exposed to outside world
@@ -176,6 +182,8 @@ spec:
               value: "yes"
             - name: KAFKA_LISTENERS  #@Andy: This is required to be specified when advertised listeners is specified but I am seeing that the advertised listeners is not working so commenting that out.
               value: "PLAINTEXT://:9092"
+            - name: KAFKA_CREATE_TOPICS
+              value: "utilizations:1:1"
               #- name: KAFKA_ADVERTISED_LISTENERS
               #value: 129.114.26.148:9092
               #value: 192.168.15.3:30000 # @Andy, although I had to change this to my IP address, you had 9092 port but it should be 30000 as it is exposed to outside world

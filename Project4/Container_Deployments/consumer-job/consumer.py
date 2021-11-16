@@ -15,7 +15,7 @@ password = "cloud"
 conn_string  = "http://{}:{}@{}:30006".format(user, password, ip_couchdb)
 print(conn_string)
 couch = couchdb.Server(conn_string)
-dbname = "team10-data"
+dbname = "energy_data"
 
 if dbname in couch:
     db = couch[dbname]
