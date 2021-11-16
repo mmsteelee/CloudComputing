@@ -5,7 +5,7 @@ import couchdb
 
 ip_kafka = "129.114.26.148"
 ip_couchdb = "129.114.27.112"
-consumer = KafkaConsumer (bootstrap_servers="{}:30002".format(ip_kafka), value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+consumer = KafkaConsumer (bootstrap_servers="{}:30000".format(ip_kafka), value_deserializer=lambda m: json.loads(m.decode('utf-8')))
 
 consumer.subscribe (topics=["utilizations"])
 
@@ -22,9 +22,9 @@ else:
 
 # we keep reading and printing
 for msg in consumer:
-    # print(msg.value)
-    # document = json.load(msg.value)
-    document = {'test': str(msg.value, 'ascii')}
+    print(msg.value)
+    document = json.load(msg.value)
+    # document = {'test': str(msg.value, 'ascii')}
     # db.save(msg.value)
     db.save(document)
 consumer.close()
