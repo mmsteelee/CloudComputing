@@ -99,8 +99,6 @@ so we had to find a way to store the join token, concatenate --node-name kubewor
 in the end, we used an external file to store the join token, then echo --node-name edit to a cat call on the variable file, store that as a
 local variable, then call it in a shell
 
-automated init and join done
-
 copied deployment and service directories (with yml files) into vm2
 cd into service first, kubectl apply -f the services (zookeeper, then kafka, then couchdb),
 then kubectl apply -f the deployments (kafka, couchdb), then kubectl apply -f the consumer
@@ -117,3 +115,23 @@ Matt: writing playbooks for automated k8 initialization, worker join, and master
 Austin: troubleshooting the playbooks on the vagrant vm provision. troubleshooting manual pod deployments on VMs
 Brett:
 
+Milestone 3:
+
+made a deployment directory to automatically call the kubectl apply -f <...> for each deployment/service
+
+to get couchdb working (for the first time) - changed from service/deployment to just "pod" resource type
+
+producer code edited to send to kafka3 deployment (where the topic was declared) 
+consumer code edited to fetch from the ??? to retrieve the data producer is sending, then provided location of couchdb sink (ip of VM3:30006)
+
+
+effort expended: 
+
+refactored our deployment and services directories into one master directory to simplify remote copy process
+
+finally got automated remote copy working - had been a bug in the path (vagrant/cc/home != vagrant/home/cc)
+
+automated init and join done
+- automating deployment not too difficult, but we were still having issues with the couchdb and consumer pods throwing errors
+- finally fixed the couchdb issue, and got the gui working - helped troublshoot consumer code
+- it was tricky getting the producer and consumer code to send to the correct kafka deployment pod

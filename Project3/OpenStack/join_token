@@ -1,1 +1,1 @@
-kubeadm join 10.212.96.12:6443 --token crm8du.x0gthx96x2to66nd --discovery-token-ca-cert-hash sha256:0dae4f8c36db46bdcfb429b635a6695e2600fc81dfa47beb23dfc15b5119244f 
+kubeadm join 10.212.96.12:6443 --token gjqq2w.gnubc3n5lyaoki1t --discovery-token-ca-cert-hash sha256:743f51f2ea56cd168f70fad0bb3b80bf15b932550a553c83753e38ef9d243721 
