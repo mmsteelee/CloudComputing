@@ -1,6 +1,8 @@
 ---
 - name: Zookeeper Service
   shell: "kubectl apply -f Container_Deployments/service/zookeeper-service.yaml"
+
+  
 - name: Kafka Service
   shell: "kubectl apply -f Container_Deployments/service/kafka-service.yaml"
 
@@ -14,9 +16,6 @@
 - name: Pause for 15 seconds to build container
   pause:
     seconds: 15
-- name: Couchdb Deployment
-  shell: "kubectl apply -f Container_Deployments/deployment/couchdb-deployment.yaml"
-
 - name: Consumer Job
   shell: "kubectl apply -f Container_Deployments/consumer-job/consumer-deployment.yaml"
 ...
