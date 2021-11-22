@@ -7,6 +7,22 @@
 #     regexp: '127.0.0.1 localhost'
 #     replace: '127.0.0.1 localhost\n{{ play_hosts[0] }} kubeworker2'
 
+- name: changing cloud.cfg
+  become: yes
+  replace:
+    path: /etc/cloud/cloud.cfg
+    regexp: 'manage_etc_hosts: true'
+    replace: 'manage_etc_hosts: false'
+  
+  
+- name: Add Entry to Hosts File (MASTER)
+  become: yes
+  become_user: root
+  replace:
+    path: /etc/hosts
+    regexp: '127.0.0.1 localhost'
+    replace: '127.0.0.1 localhost\n{{ play_hosts[0] }} kubeworker2'
+
 - name: Copying token to worker nodes
   copy: src={{ token_file }} dest=join_token
 

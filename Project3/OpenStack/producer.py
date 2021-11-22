@@ -4,27 +4,28 @@ from json import dumps
 from kafka import KafkaProducer  # producer of events
 
 # acquire the producer
-producer = KafkaProducer (bootstrap_servers="129.114.26.148:30002",
+producer = KafkaProducer (bootstrap_servers="129.114.26.148:30000",
                                           value_serializer=lambda x:
                                           dumps(x).encode('utf-8'))
 
 # open csv file into a reader
-with open('Count_Statistics_2019.csv', 'r') as csv_file:
+with open("Count_Statistics_2019.csv", "r") as csv_file:
     csv_reader = csv.reader(csv_file)
 
-# process csv line by line
-for line in csv_reader:
-    process = line
+    # process csv line by line
+    for line in csv_reader:
+        process = line
 
-    # store data as json pair
-    contents = {'test_data' : line}
+        # store data as json pair
+        contents = {'test_data' : line}
+        print(contents)
 
-    # send the contents under topic utilizations. contents sent as json pair
-    producer.send ("utilizations", value=contents)
-    producer.flush ()   # try to empty the sending buffer
+        # send the contents under topic utilizations. contents sent as json pair
+        producer.send ("utilizations", value=contents)
+        producer.flush ()   # try to empty the sending buffer
 
-    # sleep a second
-    time.sleep (5)
+        # sleep a second
+        time.sleep (5)
 
 # we are done
 producer.close ()
