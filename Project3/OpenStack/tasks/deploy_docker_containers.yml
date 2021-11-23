@@ -1,21 +1,22 @@
 ---
 - name: Zookeeper Service
-  shell: "kubectl apply -f Container_Deployments/service/zookeeper-service.yaml"
-
+  shell: "kubectl apply -f container-deployment/Kafka-Broker-Master/zk-svc.yaml"
   
 - name: Kafka Service
-  shell: "kubectl apply -f Container_Deployments/service/kafka-service.yaml"
+  shell: "kubectl apply -f container-deployment/Kafka-Broker-Master/kb-master-svc.yaml"
+
+- name: Couch Service
+  shell: "kubectl apply -f container-deployment/CouchDB/couch-svc.yml"
 
 - name: Zookeeper Deployment
-  shell: "kubectl apply -f Container_Deployments/deployment/zookeeper-deployment.yaml"
-- name: Pause for 15 seconds to build container
-  pause:
-    seconds: 15
+  shell: "kubectl apply -f container-deployment/Kafka-Broker-Master/zookeeper-deployment.yaml"
+
 - name: Kafka Deployment
-  shell: "kubectl apply -f Container_Deployments/deployment/kafka-deployment.yaml"
-- name: Pause for 15 seconds to build container
-  pause:
-    seconds: 15
+  shell: "kubectl apply -f container-deployment/Kafka-Broker-Master/kb-master-deployment.yaml"
+
+- name: Couch Deployment
+  shell: "kubectl apply -f container-deployment/CouchDB/couch-deployment.yml"
+
 - name: Consumer Job
-  shell: "kubectl apply -f Container_Deployments/consumer-job/consumer-deployment.yaml"
+  shell: "kubectl apply -f container-deployment/Kafka-Consumer/consumer-deployment.yml"
 ...

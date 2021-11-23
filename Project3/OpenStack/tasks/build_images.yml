@@ -1,0 +1,24 @@
+---
+- name: Build consumer docker image
+  shell: "sudo docker build --tag kbcon-image ."
+  args: 
+    chdir: container-deployment/consumer-job/
+
+- name: Tag consumer image
+  shell: "sudo docker tag kbcon-image:latest 129.114.26.148:5000/kbcon-image"
+
+- name: Push consumer image to registry
+  shell: "sudo docker push 129.114.26.148:5000/kbcon-image"
+
+
+- name: Build kafka docker image
+  shell: "sudo docker build --tag kb0-image"
+  args: 
+    chdir: container-deployment/Kafka-Broker-Master/
+
+- name: Tag consumer image
+  shell: "sudo docker tag kb0-image:latest 129.114.26.148:5000/kb0-image"
+
+- name: Push consumer image to registry
+  shell: "sudo docker push 129.114.26.148:5000/kb0-image"
+...

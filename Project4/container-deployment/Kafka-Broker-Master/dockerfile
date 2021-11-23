@@ -1,0 +1,8 @@
+FROM ubuntu:bionic
+
+RUN apt-get -y update && apt-get install -y net-tools wget dnsutils iputils-ping iputils-tracepath iputils-arping iputils-clockdiff default-jdk python3
+RUN apt-get install -y python3-dev python3-pip
+RUN python3 -m pip install --upgrade pip
+
+RUN wget https://downloads.apache.org/kafka/3.0.0/kafka_2.13-3.0.0.tgz
+RUN zcat kafka_2.13-3.0.0.tgz | tar xpof -

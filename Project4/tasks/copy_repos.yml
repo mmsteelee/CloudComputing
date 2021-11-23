@@ -1,11 +1,6 @@
 ---
-- name: Copy service and deployment repos
+- name: Copy service, deployment, and consumer-job repos
   copy:
-    src: /vagrant/Container_Deployments
-    dest: /cc/home/
-
-- name: Copy consumer-job repo
-  copy:
-    src: /vagrant/consumer-job
-    dest: /cc/home/
+    src: /vagrant/container-deployment
+    dest: /home/cc/
 ...

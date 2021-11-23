@@ -53,7 +53,7 @@
     - include_tasks: tasks/taint_master.yml
 
 - name: "Play 4: Copy files to VMs"
-  hosts: MyChameleonVMs
+  hosts: VM2
   remote_user: cc
   become: yes
   collections:
@@ -63,13 +63,13 @@
 
 # code for milestone 3
 # - name: "Play 4a: Build Docker image on VM3"
-#   hosts: VM3
+#   hosts: VM2
 #   remote_user: cc
-#   become: yes
+#   become: no
 #   collections:
 #     - openstack.cloud
 #   tasks:
-#     - include_tasks: tasks/build_consumer_image.yml
+#     - include_tasks: tasks/build_images.yml
 
 - name: "Play 4b: Deploy Docker Containers"
   hosts: VM2
