@@ -2,7 +2,7 @@
 - name: Build consumer docker image
   shell: "sudo docker build --tag kbcon-image ."
   args: 
-    chdir: container-deployment/consumer-job/
+    chdir: container-deployment/Kafka-Consumer/
 
 - name: Tag consumer image
   shell: "sudo docker tag kbcon-image:latest 129.114.26.148:5000/kbcon-image"
