@@ -135,3 +135,15 @@ automated init and join done
 - automating deployment not too difficult, but we were still having issues with the couchdb and consumer pods throwing errors
 - finally fixed the couchdb issue, and got the gui working - helped troublshoot consumer code
 - it was tricky getting the producer and consumer code to send to the correct kafka deployment pod
+
+full pipline working:
+- had been having issues getting data saved in couchdb, even when all pods were running successfully
+- had to manually create dockerfiles for kafka deployment, zookeeper deployment, and consumer deployment. 
+- reduced kafka deployment to 2 clusters: one on each vm
+
+teamwork:
+- Austin: troubleshooting automated deployment process with vagrant vm, management of cloud vms and clusters,
+	 recorded demo video
+- Matt: wrote dockerfiles and refactored ansible playbook code. did much of the troubleshooting after 
+	the big hurdle with no data being saved in couchdb was encountered
+- Brett: N/A
