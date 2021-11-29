@@ -11,6 +11,8 @@ spec:                     # This is the specification where we can even put the 
       labels:
         app: consumer        # some label to give to this pod (see the matching label above)
     spec:                 # actual specification
+      nodeSelector:
+        kubernetes.io/hostname: kubemaster
       containers:
       - name: consumer       # this is going to be used for DNS name
         # Change the IP address to where you are running this
