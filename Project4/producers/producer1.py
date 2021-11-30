@@ -35,7 +35,7 @@ with open("energy-sorted1M.csv", mode='r') as infile:
             json_dict = json.dumps(dict)
             producer.send('utilizations', json_dict)
             print("Sent: " + str(count))
-            time.sleep(0.1)
+            time.sleep(0.5)
         
         
 
