@@ -12,7 +12,7 @@
 
 
 - name: Build kafka docker image
-  shell: "sudo docker build --tag kb0-image"
+  shell: "sudo docker build --tag kb0-image ."
   args: 
     chdir: container-deployment/Kafka-Broker-Master/
 

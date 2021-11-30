@@ -6,7 +6,7 @@
   shell: "kubectl apply -f container-deployment/Kafka-Broker-Master/kb-master-svc.yaml"
 
 - name: Couch Service
-  shell: "kubectl apply -f container-deployment/CouchDB/couch-svc.yml"
+  shell: "kubectl apply -f container-deployment/CouchDB/couch-svc.yaml"
 
 - name: Zookeeper Deployment
   shell: "kubectl apply -f container-deployment/Kafka-Broker-Master/zookeeper-deployment.yaml"
@@ -15,8 +15,8 @@
   shell: "kubectl apply -f container-deployment/Kafka-Broker-Master/kb-master-deployment.yaml"
 
 - name: Couch Deployment
-  shell: "kubectl apply -f container-deployment/CouchDB/couch-deployment.yml"
+  shell: "kubectl apply -f container-deployment/CouchDB/couch-deployment.yaml"
 
 - name: Consumer Job
-  shell: "kubectl apply -f container-deployment/Kafka-Consumer/consumer-deployment.yml"
+  shell: "kubectl apply -f container-deployment/Kafka-Consumer/consumer-deployment.yaml"
 ...
