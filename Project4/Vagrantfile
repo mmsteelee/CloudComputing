@@ -48,9 +48,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "~/.config/openstack/clouds.yaml", destination: "~/.config/openstack/clouds.yaml"
   config.vm.provision "file", source: "./playbook_demo_master.yml", destination: "/home/vagrant/"
   config.vm.provision "file", source: "./tasks", destination: "/home/vagrant/"
-  config.vm.provision "file", source: "./Container_Deployments", destination: "/home/vagrant/"
-  config.vm.provision "file", source: "./producer1.py", destination: "/home/vagrant/"
-  config.vm.provision "file", source: "./energy-sorted1M.csv", destination: "/home/vagrant/"
+  config.vm.provision "file", source: "./container-deployment", destination: "/home/vagrant/"
+  config.vm.provision "file", source: "./producers", destination: "/home/vagrant/"
   # copy an AWS version
   # config.vm.provision ...
 

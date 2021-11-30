@@ -16,9 +16,9 @@ spec:                     # This is the specification where we can even put the 
       containers:
       - name: consumer       # this is going to be used for DNS name
         # Change the IP address to where you are running this
-        image: 129.114.26.148:5000/kbcon-image   # this is the image in registry accessible
+        image: 129.114.26.148:5000/kbcon-image:latest   # this is the image in registry accessible
                                              # from all our workers
-        imagePullPolicy: IfNotPresent  # This forces the node to pull the image
+        imagePullPolicy: Always  # This forces the node to pull the image
         command: ["python3"]
         args: ["consumer.py"]  # arguments to run. I am running this for 1000
                                                                                                        # iterations so that we have time to do an exec

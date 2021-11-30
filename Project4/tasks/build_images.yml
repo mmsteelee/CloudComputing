@@ -16,9 +16,9 @@
   args: 
     chdir: container-deployment/Kafka-Broker-Master/
 
-- name: Tag consumer image
+- name: Tag kafka image
   shell: "sudo docker tag kb0-image:latest 129.114.26.148:5000/kb0-image"
 
-- name: Push consumer image to registry
+- name: Push kafka image to registry
   shell: "sudo docker push 129.114.26.148:5000/kb0-image"
 ...
