@@ -40,4 +40,25 @@
 
 - name: Allow K8 dependencies
   shell: "sudo ufw limit 30006/tcp"
+
+- name: Allow spark dependencies
+  shell: "sudo ufw limit 7077/tcp"
+
+- name: Allow spark dependencies
+  shell: "sudo ufw limit 8080"
+
+- name: allow spark dep
+  shell: "sudo ufw limit 30008"
+
+- name: spark dep
+  shell: "sudo aufw limit 7076"
+
+- name: spark dep
+  shell: "sudo aufw limit 7078"
+
+- name: spark dep
+  shell: "sudo aufw limit 8081"
+
+- name: spark dep
+  shell: "sudo aufw limit 7079"
 ...

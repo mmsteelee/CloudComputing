@@ -14,68 +14,68 @@
 #     pause:
 #       minutes: 2
 
-# - name: "Play 2: Firewall Settings and Downloads"
-#   hosts: MyChameleonVMs
-#   remote_user: cc
-#   become: yes
-#   collections:
-#     - openstack.cloud
-#   tasks:
-#     - include_tasks: tasks/SetUFWrules.yml
-#     - include_tasks: tasks/download_dockerK8.yml
-
-- name: "Play 3a: Init Cluster on VM2"
-  hosts: VM2
-  remote_user: cc
-  vars_files:
-    - variables
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/init_k8_vm2.yml
-
-- name: "Play 3b: Join Cluster on VM3"
-  hosts: VM3
-  remote_user: cc
-  vars_files:
-    - variables
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/init_k8_vm3.yml
-
-- name: "Play 3c: Taint master on VM2"
-  hosts: VM2
-  remote_user: cc
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/taint_master.yml
-
-- name: "Play 4: Copy files to VMs"
+- name: "Play 2: Firewall Settings and Downloads"
   hosts: MyChameleonVMs
   remote_user: cc
   become: yes
   collections:
     - openstack.cloud
   tasks:
-    - include_tasks: tasks/copy_repos.yml
+    - include_tasks: tasks/SetUFWrules.yml
+#     - include_tasks: tasks/download_dockerK8.yml
 
-- name: "Play 4a: Build Docker image on VM3"
-  hosts: VM3
-  remote_user: cc
-  become: yes
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/build_images.yml
+# - name: "Play 3a: Init Cluster on VM2"
+#   hosts: VM2
+#   remote_user: cc
+#   vars_files:
+#     - variables
+#   collections:
+#     - openstack.cloud
+#   tasks:
+#     - include_tasks: tasks/init_k8_vm2.yml
 
-- name: "Play 4b: Deploy Docker Containers"
-  hosts: VM2
-  remote_user: cc
-  collections:
-    - openstack.cloud
-  tasks:
-    - include_tasks: tasks/deploy_docker_containers.yml
+# - name: "Play 3b: Join Cluster on VM3"
+#   hosts: VM3
+#   remote_user: cc
+#   vars_files:
+#     - variables
+#   collections:
+#     - openstack.cloud
+#   tasks:
+#     - include_tasks: tasks/init_k8_vm3.yml
+
+# - name: "Play 3c: Taint master on VM2"
+#   hosts: VM2
+#   remote_user: cc
+#   collections:
+#     - openstack.cloud
+#   tasks:
+#     - include_tasks: tasks/taint_master.yml
+
+# - name: "Play 4: Copy files to VMs"
+#   hosts: MyChameleonVMs
+#   remote_user: cc
+#   become: yes
+#   collections:
+#     - openstack.cloud
+#   tasks:
+#     - include_tasks: tasks/copy_repos.yml
+
+# - name: "Play 4a: Build Docker image on VM3"
+#   hosts: VM3
+#   remote_user: cc
+#   become: yes
+#   collections:
+#     - openstack.cloud
+#   tasks:
+#     - include_tasks: tasks/build_images.yml
+
+# - name: "Play 4b: Deploy Docker Containers"
+#   hosts: VM2
+#   remote_user: cc
+#   collections:
+#     - openstack.cloud
+#   tasks:
+#     - include_tasks: tasks/deploy_docker_containers.yml
 ...
 
