@@ -48,9 +48,9 @@ if __name__ == "__main__":
     output = sums.collect()
 
     count = 0
-    for (household, values) in output:
+    for (plug_id, values) in output:
         count += 1
-        dict  = {'household' : household, 'avg_work' : values[0] / values[2], 'avg_load' : values[1] / values[3]}
+        dict  = {'plug_id' : plug_id, 'avg_work' : values[0] / values[2], 'avg_load' : values[1] / values[3]}
         json_dict = json.dumps(dict)
         producer.send('utilizations', json_dict)
         if count % 100 == 0 :
