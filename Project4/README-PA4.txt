@@ -17,3 +17,11 @@ Teamwork:
 - Austin: recorded the demo video
 - Brett: N/A
 
+for demo:
+open driver node:
+kubectl exec -it spark-driver-deploy-6b4f5885db-wcqpk /bin/bash
+
+tests: 
+${SPARK_HOME}/bin/spark-submit --master spark://spark-master-svc:7077 --properties-file ${SPARK_HOME}/conf/spark-driver.conf energy-map.py
+
+for work submissions: 
