@@ -15,7 +15,7 @@ import csv
 producer = KafkaProducer (bootstrap_servers="129.114.27.112:30001", value_serializer=lambda v: json.dumps(v).encode('ascii'), batch_size=1000000)
 producer.config
 
-with open("energy-sorted1.csv", mode='r') as infile:
+with open("energy-sorted1M.csv", mode='r') as infile:
     reader = csv.reader(infile)
 
     count = 0

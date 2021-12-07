@@ -13,7 +13,7 @@ consumer.subscribe (topics=["utilizations"])
 user = "admin"
 password = "cloud"
 couch = couchdb.Server("http://{}:{}@{}:30006".format(user, password, ip_couchdb))
-dbname = "energy-data"
+dbname = "energy-final"
 
 if dbname in couch:
     db = couch[dbname]

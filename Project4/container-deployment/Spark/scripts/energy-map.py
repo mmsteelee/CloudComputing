@@ -16,13 +16,11 @@ if __name__ == "__main__":
 
     spark = SparkSession\
         .builder\
-        .appName("PythonWordCount")\
+        .appName("EnergyMapReduce")\
         .getOrCreate()
 
     sc = spark.sparkContext
 
-
-    # acquire couchdb server
     ip_couchdb = "129.114.27.112"
     user = "admin"
     password = "cloud"
@@ -36,24 +34,30 @@ if __name__ == "__main__":
     else:
         db = couch.create(dbname)
 
+
     data = []
-    with open('energy-data.csv', 'r', encoding='UTF8') as f: 
-        reader = csv.reader(f)
-        for row in reader:
-            data.append(row)
+
+    for docid in db.view('_all_docs'):
+        doc = db[docid['id']]['docs']
+        data = data + doc
     
     rdd = sc.parallelize(data)
 #    print(rdd.collect())
 
-    sums = rdd.map(lambda x: ({'house_id' : x[6], 'household_id' : x[5], 'plug_id' : x[4]}, (float(x[2]), 0.0) if x[3] == '0' else (0.0, float(x[2])))) \
-              .reduceByKey(lambda a,b : (a[0] + b[0], a[1] + b[1]))
+    sums = rdd.map(lambda x: ((x['house_id'], x['household_id'], x['plug_id']), (float(x['value']), 0.0, 1, 0) if x['property'] == '0' else (0.0, float(x['value']), 0, 1))) \
+              .reduceByKey(lambda a,b : (a[0] + b[0], a[1] + b[1], a[2] + b[2], a[3] + b[3]))
     output = sums.collect()
 
+    count = 0
     for (household, values) in output:
-        print({household : values})
-#        json_dict = json.dumps(dict)
-#        producer.send('utilizations', json_dict)
+        count += 1
+        dict  = {'household' : household, 'avg_work' : values[0] / values[2], 'avg_load' : values[1] / values[3]}
+        json_dict = json.dumps(dict)
+        producer.send('utilizations', json_dict)
+        if count % 100 == 0 :
+            print('finished: ' + str(count))
 
+    print('All data sent to CouchDB')
     producer.close()
     spark.stop()
 
