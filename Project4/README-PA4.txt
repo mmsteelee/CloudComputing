@@ -25,3 +25,13 @@ tests:
 ${SPARK_HOME}/bin/spark-submit --master spark://spark-master-svc:7077 --properties-file ${SPARK_HOME}/conf/spark-driver.conf energy-map.py
 
 for work submissions: 
+
+exec into the kubernetes spark driver pod
+
+nano ${SPARK_HOME}/conf/spark-driver.conf
+change the default parralleism and partitions to the map # and reduce #
+
+run the script run_iters.sh by typing ./run_iters.sh
+
+repeat 3 times with the different map and reduce numbers, get data on the time it has taken to do each of the 10 executions of map/reduce and plot the distribution
+can access spark web gui at http://129.114.26.148:30008
