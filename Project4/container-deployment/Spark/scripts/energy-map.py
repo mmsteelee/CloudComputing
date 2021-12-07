@@ -5,7 +5,6 @@ from kafka import KafkaProducer
 from pyspark.sql import SparkSession
 import couchdb
 from time import sleep
-import csv
 
 
 producer = KafkaProducer (bootstrap_servers="129.114.26.148:30000", value_serializer=lambda v: json.dumps(v).encode('ascii'))
